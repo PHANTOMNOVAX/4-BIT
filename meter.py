@@ -16,4 +16,4 @@ def detect_meter(text):
         return "Jagati"
 
     else:
-        return "Unknown Meter"   
+        return "Unknown Meter"
