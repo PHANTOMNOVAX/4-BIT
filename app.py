@@ -14,7 +14,7 @@ def home():
 
     if request.method == "POST":
 
-        verse = request.form["verse"]
+        verse = request.form.get("verse", "").strip()
 
         meter = detect_meter(verse)
 
