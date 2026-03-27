@@ -2,42 +2,92 @@
 <html>
 
 <head>
-<title>Sanskrit Recitation Website</title>
+
+<title>Sanskrit Chandas Recitation System</title>
+
+<style>
+
+body {
+font-family: Arial;
+background: #f5f7fa;
+padding: 40px;
+}
+
+.container {
+background: white;
+padding: 30px;
+border-radius: 12px;
+box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+textarea {
+width: 100%;
+height: 140px;
+font-size: 18px;
+}
+
+button {
+
+background: #2d6cdf;
+color: white;
+border: none;
+padding: 12px 20px;
+font-size: 18px;
+border-radius: 6px;
+
+}
+
+.result {
+
+margin-top: 20px;
+padding: 15px;
+background: #eef3ff;
+border-radius: 6px;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>Sanskrit Verse Translator + Recitation</h2>
+<div class="container">
+
+<h2>Chanda-Based Sanskrit Recitation Engine</h2>
 
 <form method="POST">
 
 <textarea name="verse"
-rows="4"
-cols="50"
-placeholder="Enter Sanskrit verse"></textarea>
+placeholder="Enter Sanskrit verse or stanza"></textarea>
 
 <br><br>
 
-<button type="submit">Generate</button>
+<button type="submit">Generate Chanting</button>
 
 </form>
 
 {% if meter %}
 
-<h3>Detected Meter:</h3>
+<div class="result">
+
+<h3>Detected Meter</h3>
 <p>{{ meter }}</p>
 
-<h3>Translation:</h3>
+<h3>Translation</h3>
 <p>{{ translation }}</p>
 
-<h3>Audio Output:</h3>
+<h3>Audio Chant</h3>
 
 <audio controls>
-<source src="{{ audio }}" type="audio/mp3">
+<source src="{{ audio }}">
 </audio>
+
+</div>
 
 {% endif %}
 
-</body>
+</div>
 
+</body>
 </html>
