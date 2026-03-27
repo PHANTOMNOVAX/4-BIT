@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
 <title>Chant Visualization</title>
 
 <style>
@@ -28,6 +29,25 @@ margin:auto;
 margin-top:40px;
 }
 
+.line{
+font-size:24px;
+margin:6px 0;
+transition:0.3s;
+}
+
+.active-line{
+color:#7a3e65;
+font-weight:bold;
+transform:scale(1.05);
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+margin-top:20px;
+}
+
 </style>
 
 </head>
@@ -48,13 +68,114 @@ margin-top:40px;
 
 <h2>Live Chant Visualization</h2>
 
-<p>
 
-Upload a Sanskrit stanza in Translate page to visualize chanting rhythm here.
+{% if meter %}
 
-</p>
+<div class="card">
+
+<h3>Detected Meter</h3>
+
+<p>{{ meter }}</p>
 
 </div>
 
+{% endif %}
+
+
+{% if translation %}
+
+<div class="card">
+
+<h3>Translation</h3>
+
+<p>{{ translation }}</p>
+
+</div>
+
+{% endif %}
+
+
+{% if lines %}
+
+<div class="card">
+
+<h3>Verse</h3>
+
+<div id="verse-display">
+
+{% for line in lines %}
+
+<div class="line" id="line{{ loop.index0 }}">
+
+{{ line }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<br>
+
+<audio id="chantAudio" controls>
+
+<source src="{{ audio }}">
+
+</audio>
+
+</div>
+
+{% endif %}
+
+
+</div>
+
+
+<script>
+
+const audio = document.getElementById("chantAudio");
+
+if(audio){
+
+const lines = document.querySelectorAll(".line");
+
+audio.addEventListener("play", () => {
+
+let index = 0;
+
+highlight(index);
+
+let interval = setInterval(() => {
+
+index++;
+
+if(index < lines.length){
+
+highlight(index);
+
+}else{
+
+clearInterval(interval);
+
+}
+
+}, 2500);
+
+});
+
+function highlight(i){
+
+lines.forEach(l => l.classList.remove("active-line"));
+
+lines[i].classList.add("active-line");
+
+}
+
+}
+
+</script>
+
+
 </body>
+
 </html>
