@@ -1,6 +1,6 @@
 def split_syllables(text):
 
-    vowels = "अआइईउऊएऐओऔ"
+    vowels = "अआइईउऊऋएऐओऔ"
 
     syllables = []
 
@@ -8,16 +8,16 @@ def split_syllables(text):
 
     for char in text:
 
+        if char == " ":
+            continue
+
         current += char
 
         if char in vowels:
-
             syllables.append(current)
-
             current = ""
 
     if current:
-
         syllables.append(current)
 
     return syllables
