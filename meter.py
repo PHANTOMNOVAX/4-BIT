@@ -1,20 +1,14 @@
 from syllable_splitter import split_syllables
 
 
-def clean_lines(text):
-
-    text = text.replace("॥", "\n")
-    text = text.replace("।", "\n")
-
-    return [line.strip() for line in text.split("\n") if line.strip()]
-
-
 def detect_meter(text):
 
-    lines = clean_lines(text)
+    lines = text.replace("॥", "\n").split("\n")
+
+    lines = [l.strip() for l in lines if l.strip()]
 
     if len(lines) < 2:
-        return "Not a metrical verse (looks like paragraph text)"
+        return "Prose (not a metrical verse)"
 
     syllable_counts = []
 
@@ -33,5 +27,4 @@ def detect_meter(text):
     elif 12 <= avg <= 14:
         return f"Jagati Meter (pattern: {syllable_counts})"
 
-    else:
-        return f"Unknown Meter (pattern: {syllable_counts})"
+    return f"Unknown Meter (pattern: {syllable_counts})"
