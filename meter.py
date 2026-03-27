@@ -3,28 +3,31 @@ from syllable_splitter import split_syllables
 
 def detect_meter(text):
 
-    lines = text.replace("॥", "\n").split("\n")
+    lines = text.replace("॥", "\n").replace("।", "\n").split("\n")
 
     lines = [l.strip() for l in lines if l.strip()]
 
     if len(lines) < 2:
         return "Prose (not a metrical verse)"
 
-    syllable_counts = []
+    counts = []
 
     for line in lines:
+
         syllables = split_syllables(line)
-        syllable_counts.append(len(syllables))
 
-    avg = sum(syllable_counts) / len(syllable_counts)
+        counts.append(len(syllables))
 
-    if 7 <= avg <= 9:
-        return f"Anushtubh Meter (pattern: {syllable_counts})"
+    if all(7 <= c <= 9 for c in counts):
 
-    elif 10 <= avg <= 12:
-        return f"Trishtubh Meter (pattern: {syllable_counts})"
+        return f"Anushtubh Meter (pattern: {counts})"
 
-    elif 12 <= avg <= 14:
-        return f"Jagati Meter (pattern: {syllable_counts})"
+    elif all(10 <= c <= 12 for c in counts):
 
-    return f"Unknown Meter (pattern: {syllable_counts})"
+        return f"Trishtubh Meter (pattern: {counts})"
+
+    elif all(12 <= c <= 14 for c in counts):
+
+        return f"Jagati Meter (pattern: {counts})"
+
+    return f"Unknown Meter (pattern: {counts})"
