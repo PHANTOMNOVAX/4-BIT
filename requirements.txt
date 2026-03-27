@@ -1,0 +1,6 @@
+flask
+gtts
+numpy
+transformers
+sentencepiece
+torch
