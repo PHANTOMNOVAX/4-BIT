@@ -3,92 +3,53 @@ import os
 import re
 
 
-OUTPUT = "static/audio/output.mp3"
+OUTPUT_FILE = "static/audio/output.mp3"
 
 
-def improve_pronunciation(text):
+def preprocess_text(text):
     """
-    Adjust Sanskrit phonetics for clearer Indian-style chanting
+    Clean Sanskrit text for chanting
     """
-
-    replacements = {
-
-        "ः": "aha",
-        "ं": "am",
-        "ण": "na",
-        "ञ": "nya",
-        "त्र": "tra",
-        "ज्ञ": "gya",
-        "श्र": "shra",
-
-        "क": "ka",
-        "ख": "kha",
-        "ग": "ga",
-        "घ": "gha",
-
-        "च": "cha",
-        "ज": "ja",
-
-        "ट": "ta",
-        "ठ": "tha",
-        "ड": "da",
-        "ढ": "dha",
-
-        "त": "ta",
-        "थ": "tha",
-        "द": "da",
-        "ध": "dha",
-
-        "प": "pa",
-        "फ": "pha",
-        "ब": "ba",
-        "भ": "bha",
-
-        "श": "sha",
-        "ष": "sha",
-        "स": "sa",
-
-        "अ": "a",
-        "आ": "aa",
-        "इ": "i",
-        "ई": "ee",
-        "उ": "u",
-        "ऊ": "oo",
-        "ए": "e",
-        "ऐ": "ai",
-        "ओ": "o",
-        "औ": "au"
-    }
-
-    for k, v in replacements.items():
-        text = text.replace(k, v)
-
-    return text
-
-
-def split_for_rhythm(text):
 
     text = text.replace("॥", ". ")
     text = text.replace("।", ". ")
 
-    return text
+    text = re.sub(r"\s+", " ", text)
+
+    return text.strip()
+
+
+def split_lines(text):
+    """
+    Split verse into chanting segments
+    """
+
+    parts = text.split(". ")
+
+    return [p.strip() for p in parts if p.strip()]
 
 
 def generate_audio(text, meter=""):
 
-    text = split_for_rhythm(text)
+    cleaned = preprocess_text(text)
 
-    phonetic_text = improve_pronunciation(text)
+    lines = split_lines(cleaned)
 
+    chant_text = ""
+
+    for line in lines:
+        chant_text += line + "... "
+
+    # Restore original Hindi chanting voice
     tts = gTTS(
-        phonetic_text,
-        lang="en", tld="co.in",
+        text=chant_text,
+        lang="hi",
         slow=False
     )
 
     if not os.path.exists("static/audio"):
         os.makedirs("static/audio")
 
-    tts.save(OUTPUT)
+    tts.save(OUTPUT_FILE)
 
-    return "/" + OUTPUT
+    return "/" + OUTPUT_FILE
