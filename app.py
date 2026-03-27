@@ -7,8 +7,13 @@ from tts import generate_audio
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
+    return render_template("home.html")
+
+
+@app.route("/translate", methods=["GET", "POST"])
+def translate():
 
     meter = None
     translation = None
@@ -30,12 +35,22 @@ def home():
             audio = generate_audio(verse, meter)
 
     return render_template(
-        "index.html",
+        "translate.html",
         meter=meter,
         translation=translation,
         audio=audio,
         lines=lines
     )
+
+
+@app.route("/chant")
+def chant():
+    return render_template("chant.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 if __name__ == "__main__":
