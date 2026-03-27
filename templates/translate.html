@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Translation Tool</title>
+
+<style>
+
+body{
+font-family:"Segoe UI";
+background:#f6f2ec;
+}
+
+.navbar{
+background:#4b2a3a;
+padding:20px;
+}
+
+.navbar a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.container{
+width:70%;
+margin:auto;
+margin-top:40px;
+}
+
+textarea{
+width:100%;
+height:140px;
+font-size:18px;
+padding:10px;
+}
+
+button{
+background:#7a3e65;
+color:white;
+padding:14px 26px;
+border:none;
+font-size:18px;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+margin-top:20px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<a href="/">Home</a>
+<a href="/translate">Translate</a>
+<a href="/chant">Chant</a>
+<a href="/about">About</a>
+
+</div>
+
+
+<div class="container">
+
+<h2>Enter Sanskrit Verse</h2>
+
+<form method="POST">
+
+<textarea name="verse"></textarea>
+
+<br>
+
+<button type="submit">Generate Recitation</button>
+
+</form>
+
+
+{% if meter %}
+
+<div class="card">
+
+<h3>Detected Meter</h3>
+
+<p>{{ meter }}</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Translation</h3>
+
+<p>{{ translation }}</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Audio Chant</h3>
+
+<audio controls>
+
+<source src="{{ audio }}">
+
+</audio>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
