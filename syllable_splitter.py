@@ -1,6 +1,12 @@
+import re
+
+
+VOWELS = "अआइईउऊऋॠऌएऐओऔ"
+
+
 def split_syllables(text):
 
-    vowels = "अआइईउऊऋएऐओऔ"
+    text = re.sub(r"[^\u0900-\u097F]", "", text)
 
     syllables = []
 
@@ -8,13 +14,12 @@ def split_syllables(text):
 
     for char in text:
 
-        if char == " ":
-            continue
-
         current += char
 
-        if char in vowels:
+        if char in VOWELS:
+
             syllables.append(current)
+
             current = ""
 
     if current:
