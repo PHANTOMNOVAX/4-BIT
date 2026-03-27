@@ -46,7 +46,20 @@ color:#7a3e65;
 font-weight:bold;
 transform:scale(1.05);
 }
+.line{
+font-size:28px;
+margin:12px 0;
+transition:all 0.3s ease;
+}
 
+.active-line{
+color:#7a3e65;
+font-weight:bold;
+transform:scale(1.08);
+background:#f4e7ea;
+padding:6px;
+border-radius:6px;
+}
 </style>
 
 </head>
@@ -145,7 +158,6 @@ Go to <b>Translate</b> page and enter a Sanskrit verse first.
 
 </div>
 
-
 <script>
 
 const audio = document.getElementById("chantAudio");
@@ -154,13 +166,15 @@ if(audio){
 
 const lines = document.querySelectorAll(".line");
 
-audio.addEventListener("play", () => {
+audio.onloadedmetadata = () => {
 
 let totalDuration = audio.duration;
 
 let step = totalDuration / lines.length;
 
 let index = 0;
+
+audio.addEventListener("play", () => {
 
 highlight(index);
 
@@ -181,6 +195,8 @@ clearInterval(interval);
 }, step * 1000);
 
 });
+
+};
 
 function highlight(i){
 
