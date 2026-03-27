@@ -1,12 +1,7 @@
-from transformers import pipeline
+from googletrans import Translator
 
-translator = pipeline(
-    "translation",
-    model="Helsinki-NLP/opus-mt-sa-en"
-)
+translator = Translator()
 
 def translate_text(text):
-
-    result = translator(text)
-
-    return result[0]['translation_text']
+    translated = translator.translate(text, src='sa', dest='en')
+    return translated.text
