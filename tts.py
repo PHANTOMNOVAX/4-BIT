@@ -82,7 +82,7 @@ def generate_audio(text, meter=""):
 
     tts = gTTS(
         phonetic_text,
-        lang="hi",
+        lang="en", tld="co.in"
         slow=False
     )
 
