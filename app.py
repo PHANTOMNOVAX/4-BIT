@@ -21,18 +21,20 @@ def translate():
 
         verse = request.form.get("verse", "").strip()
 
-        session["verse"] = verse
+        if verse:
 
-        session["meter"] = detect_meter(verse)
+            session["verse"] = verse
 
-        session["translation"] = translate_text(verse)
+            session["meter"] = detect_meter(verse)
 
-        session["audio"] = generate_audio(
-            verse,
-            session["meter"]
-        )
+            session["translation"] = translate_text(verse)
 
-        return redirect(url_for("chant"))
+            session["audio"] = generate_audio(
+                verse,
+                session["meter"]
+            )
+
+            return redirect(url_for("chant"))
 
     return render_template("translate.html")
 
@@ -40,18 +42,15 @@ def translate():
 @app.route("/chant")
 def chant():
 
-    verse = session.get("verse")
+    verse = session.get("verse", "")
 
-    meter = session.get("meter")
+    meter = session.get("meter", "")
 
-    translation = session.get("translation")
+    translation = session.get("translation", "")
 
-    audio = session.get("audio")
+    audio = session.get("audio", "")
 
-    if verse:
-        lines = verse.split("\n")
-    else:
-        lines = []
+    lines = verse.split("\n") if verse else []
 
     return render_template(
         "chant.html",
