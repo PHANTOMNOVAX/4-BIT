@@ -1,10 +1,10 @@
-from googletrans import Translator
+\from googletrans import Translator
 
 translator = Translator()
 
 def translate_text(text):
     try:
-        translated = translator.translate(text, src='sa', dest='en')
-        return translated.text
+        result = translator.translate(text, src='auto', dest='en')
+        return result.text
     except:
-        return "Translation temporarily unavailable"
+        return "Translation unavailable (check internet connection)"
