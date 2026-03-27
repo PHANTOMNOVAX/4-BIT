@@ -44,7 +44,7 @@ def generate_audio(text, meter=""):
     tts = gTTS(
         text=chant_text,
         lang="hi",
-        slow=False
+        slow=True
     )
 
     if not os.path.exists("static/audio"):
