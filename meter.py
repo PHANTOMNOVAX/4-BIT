@@ -1,36 +1,37 @@
 from syllable_splitter import split_syllables
 
 
+def clean_lines(text):
+
+    text = text.replace("॥", "\n")
+    text = text.replace("।", "\n")
+
+    return [line.strip() for line in text.split("\n") if line.strip()]
+
+
 def detect_meter(text):
 
-    # split stanza into lines automatically
-    lines = [line.strip() for line in text.split("\n") if line.strip()]
+    lines = clean_lines(text)
 
-    if len(lines) == 1:
-        # try splitting by danda punctuation
-        lines = text.replace("।", "\n").replace("॥", "\n").split("\n")
+    if len(lines) < 2:
+        return "Not a metrical verse (looks like paragraph text)"
 
-    syllable_pattern = []
+    syllable_counts = []
 
     for line in lines:
-
         syllables = split_syllables(line)
+        syllable_counts.append(len(syllables))
 
-        syllable_pattern.append(len(syllables))
-
-    if not syllable_pattern:
-        return "Unknown Meter"
-
-    avg = sum(syllable_pattern) / len(syllable_pattern)
+    avg = sum(syllable_counts) / len(syllable_counts)
 
     if 7 <= avg <= 9:
-        return "Anushtubh (8 syllables per line)"
+        return f"Anushtubh Meter (pattern: {syllable_counts})"
 
     elif 10 <= avg <= 12:
-        return "Trishtubh (11 syllables per line)"
+        return f"Trishtubh Meter (pattern: {syllable_counts})"
 
     elif 12 <= avg <= 14:
-        return "Jagati (12 syllables per line)"
+        return f"Jagati Meter (pattern: {syllable_counts})"
 
     else:
-        return f"Unknown Meter (pattern: {syllable_pattern})"
+        return f"Unknown Meter (pattern: {syllable_counts})"
