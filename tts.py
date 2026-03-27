@@ -1,73 +1,55 @@
 from gtts import gTTS
-from syllable_splitter import split_syllables
+import os
 import re
 
 
-def apply_sanskrit_pronunciation(text):
-
-    # normalize anusvara and visarga spacing
-    text = re.sub("ं", "म्", text)
-    text = re.sub("ः", "ह्", text)
-
-    return text
+AUDIO_PATH = "static/audio/output.mp3"
 
 
-def create_chant_pattern(syllables):
+def clean_text(text):
+    """
+    Prepare Sanskrit text for better chanting rhythm
+    """
 
-    chant_sequence = []
+    text = text.replace("॥", ". ")
+    text = text.replace("।", ". ")
 
-    for index, syllable in enumerate(syllables):
+    text = re.sub(r"\s+", " ", text)
 
-        # simulate udātta emphasis
-        if index % 4 == 0:
-            chant_sequence.append(syllable.upper())
-
-        # simulate svarita rise
-        elif index % 3 == 0:
-            chant_sequence.append(syllable + "—")
-
-        else:
-            chant_sequence.append(syllable)
-
-    return chant_sequence
+    return text.strip()
 
 
-def generate_audio(text, meter="Unknown"):
+def split_for_chanting(text):
+    """
+    Split verse into chantable segments
+    """
 
-    text = apply_sanskrit_pronunciation(text)
+    lines = re.split(r"[।॥]", text)
 
-    syllables = split_syllables(text)
+    return [line.strip() for line in lines if line.strip()]
 
-    chant_pattern = create_chant_pattern(syllables)
 
-    if "Anushtubh" in meter:
-        pause = " ... "
+def generate_audio(text, meter=""):
 
-    elif "Trishtubh" in meter:
-        pause = " .. "
+    text = clean_text(text)
 
-    elif "Jagati" in meter:
-        pause = " .... "
+    chant_lines = split_for_chanting(text)
 
-    else:
-        pause = " ... "
+    chant_text = ""
 
-    chanting_text = pause.join(chant_pattern)
+    for line in chant_lines:
+        chant_text += line + "... "
 
-    filename = "static/audio/output.mp3"
+    # Hindi voice gives best Sanskrit phonetics in gTTS
+    tts = gTTS(
+        text=chant_text,
+        lang="hi",
+        slow=False
+    )
 
-    try:
+    if not os.path.exists("static/audio"):
+        os.makedirs("static/audio")
 
-        tts = gTTS(
-            text=chanting_text,
-            lang="hi",
-            slow=True
-        )
+    tts.save(AUDIO_PATH)
 
-        tts.save(filename)
-
-    except:
-        with open(filename, "wb") as f:
-            f.write(b"")
-
-    return filename
+    return "/" + AUDIO_PATH
