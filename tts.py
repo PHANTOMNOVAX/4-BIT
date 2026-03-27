@@ -3,53 +3,73 @@ import os
 import re
 
 
-AUDIO_PATH = "static/audio/output.mp3"
+OUTPUT_PATH = "static/audio/output.mp3"
 
 
-def clean_text(text):
+def preprocess_text(text):
     """
-    Prepare Sanskrit text for better chanting rhythm
+    Prepare Sanskrit verse for chanting clarity
     """
 
-    text = text.replace("॥", ". ")
-    text = text.replace("।", ". ")
+    text = text.replace("॥", "।")
+    text = text.replace("\n", "।")
 
     text = re.sub(r"\s+", " ", text)
 
     return text.strip()
 
 
-def split_for_chanting(text):
+def split_padas(text):
     """
-    Split verse into chantable segments
+    Split verse into chantable padas (metrical segments)
     """
 
-    lines = re.split(r"[।॥]", text)
+    segments = re.split(r"[।]", text)
 
-    return [line.strip() for line in lines if line.strip()]
+    return [seg.strip() for seg in segments if seg.strip()]
+
+
+def meter_pause(meter):
+    """
+    Adjust pause timing based on detected meter
+    """
+
+    if "Anushtubh" in meter:
+        return "... "
+
+    elif "Trishtubh" in meter:
+        return ".... "
+
+    elif "Jagati" in meter:
+        return "..... "
+
+    else:
+        return "... "
 
 
 def generate_audio(text, meter=""):
 
-    text = clean_text(text)
+    cleaned = preprocess_text(text)
 
-    chant_lines = split_for_chanting(text)
+    segments = split_padas(cleaned)
+
+    pause = meter_pause(meter)
 
     chant_text = ""
 
-    for line in chant_lines:
-        chant_text += line + "... "
+    for seg in segments:
+        chant_text += seg + pause
 
-    # Hindi voice gives best Sanskrit phonetics in gTTS
+    # Hindi phonetics produce best Sanskrit clarity
     tts = gTTS(
         text=chant_text,
         lang="hi",
-        slow=True
+        slow=True 
     )
 
     if not os.path.exists("static/audio"):
         os.makedirs("static/audio")
 
-    tts.save(AUDIO_PATH)
+    tts.save(OUTPUT_PATH)
 
-    return "/" + AUDIO_PATH
+    return "/" + OUTPUT_PATH
