@@ -4,7 +4,8 @@ def generate_audio(text):
 
     filename = "static/audio/output.mp3"
 
-    tts = gTTS(text=text, lang="sa")
+    # fallback pronunciation engine (Hindi supports Sanskrit phonetics well)
+    tts = gTTS(text=text, lang="hi")
 
     tts.save(filename)
 
