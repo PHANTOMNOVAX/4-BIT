@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
 
 from meter import detect_meter
 from translator import translate_text
 from tts import generate_audio
 
 app = Flask(__name__)
+
+app.secret_key = "chant_engine_secret"
 
 
 @app.route("/")
@@ -15,37 +17,49 @@ def home():
 @app.route("/translate", methods=["GET", "POST"])
 def translate():
 
-    meter = None
-    translation = None
-    audio = None
-    lines = None
-
     if request.method == "POST":
 
         verse = request.form.get("verse", "").strip()
 
-        if verse:
+        session["verse"] = verse
 
-            lines = verse.split("\n")
+        session["meter"] = detect_meter(verse)
 
-            meter = detect_meter(verse)
+        session["translation"] = translate_text(verse)
 
-            translation = translate_text(verse)
+        session["audio"] = generate_audio(
+            verse,
+            session["meter"]
+        )
 
-            audio = generate_audio(verse, meter)
+        return redirect(url_for("chant"))
 
-    return render_template(
-        "translate.html",
-        meter=meter,
-        translation=translation,
-        audio=audio,
-        lines=lines
-    )
+    return render_template("translate.html")
 
 
 @app.route("/chant")
 def chant():
-    return render_template("chant.html")
+
+    verse = session.get("verse")
+
+    meter = session.get("meter")
+
+    translation = session.get("translation")
+
+    audio = session.get("audio")
+
+    if verse:
+        lines = verse.split("\n")
+    else:
+        lines = []
+
+    return render_template(
+        "chant.html",
+        lines=lines,
+        meter=meter,
+        translation=translation,
+        audio=audio
+    )
 
 
 @app.route("/about")
