@@ -3,73 +3,92 @@ import os
 import re
 
 
-OUTPUT_PATH = "static/audio/output.mp3"
+OUTPUT = "static/audio/output.mp3"
 
 
-def preprocess_text(text):
+def improve_pronunciation(text):
     """
-    Prepare Sanskrit verse for chanting clarity
-    """
-
-    text = text.replace("॥", "।")
-    text = text.replace("\n", "।")
-
-    text = re.sub(r"\s+", " ", text)
-
-    return text.strip()
-
-
-def split_padas(text):
-    """
-    Split verse into chantable padas (metrical segments)
+    Adjust Sanskrit phonetics for clearer Indian-style chanting
     """
 
-    segments = re.split(r"[।]", text)
+    replacements = {
 
-    return [seg.strip() for seg in segments if seg.strip()]
+        "ः": "aha",
+        "ं": "am",
+        "ण": "na",
+        "ञ": "nya",
+        "त्र": "tra",
+        "ज्ञ": "gya",
+        "श्र": "shra",
+
+        "क": "ka",
+        "ख": "kha",
+        "ग": "ga",
+        "घ": "gha",
+
+        "च": "cha",
+        "ज": "ja",
+
+        "ट": "ta",
+        "ठ": "tha",
+        "ड": "da",
+        "ढ": "dha",
+
+        "त": "ta",
+        "थ": "tha",
+        "द": "da",
+        "ध": "dha",
+
+        "प": "pa",
+        "फ": "pha",
+        "ब": "ba",
+        "भ": "bha",
+
+        "श": "sha",
+        "ष": "sha",
+        "स": "sa",
+
+        "अ": "a",
+        "आ": "aa",
+        "इ": "i",
+        "ई": "ee",
+        "उ": "u",
+        "ऊ": "oo",
+        "ए": "e",
+        "ऐ": "ai",
+        "ओ": "o",
+        "औ": "au"
+    }
+
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+
+    return text
 
 
-def meter_pause(meter):
-    """
-    Adjust pause timing based on detected meter
-    """
+def split_for_rhythm(text):
 
-    if "Anushtubh" in meter:
-        return "... "
+    text = text.replace("॥", ". ")
+    text = text.replace("।", ". ")
 
-    elif "Trishtubh" in meter:
-        return ".... "
-
-    elif "Jagati" in meter:
-        return "..... "
-
-    else:
-        return "... "
+    return text
 
 
 def generate_audio(text, meter=""):
 
-    cleaned = preprocess_text(text)
+    text = split_for_rhythm(text)
 
-    segments = split_padas(cleaned)
+    phonetic_text = improve_pronunciation(text)
 
-    pause = meter_pause(meter)
-
-    chant_text = ""
-
-    for seg in segments:
-        chant_text += seg + pause
-
-    # Hindi phonetics produce best Sanskrit clarity
     tts = gTTS(
-        text=chant_text,
+        phonetic_text,
         lang="hi",
-        slow=True 
+        slow=False
     )
 
     if not os.path.exists("static/audio"):
         os.makedirs("static/audio")
 
-    tts.save(OUTPUT_PATH)
+    tts.save(OUTPUT)
 
-    return "/" + OUTPUT_PATH
+    return "/" + OUTPUT
