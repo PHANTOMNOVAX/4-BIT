@@ -2,9 +2,20 @@
 <html>
 
 <head>
-<title>Sanskrit Recitation Engine</title>
+<title>Vakaya Vani – Sanskrit Recitation Engine</title>
+
 <style>
-  /* NAVBAR */
+
+/* PAGE BASE */
+
+body{
+margin:0;
+font-family:Georgia, serif;
+background:#f7f3ef;
+}
+
+
+/* NAVBAR */
 
 .navbar{
 display:flex;
@@ -23,52 +34,52 @@ height:80px;
 margin-right:50px;
 font-size:18px;
 letter-spacing:1.5px;
+color:white;
+text-decoration:none;
 }
+
+
+/* RIGHT MENU */
 
 .nav-right a{
 margin-left:50px;
 font-size:18px;
 letter-spacing:1.5px;
+color:white;
+text-decoration:none;
 }
 
 
-/* CENTER LOGO WRAPPER */
+/* CENTER LOGO */
 
 .logo-wrapper{
 position:absolute;
 left:50%;
 top:0;
-transform:translate(-50%, -35%);
+transform:translate(-50%, -40%);
 text-align:center;
 }
 
 
-/* POP-OUT OM LOGO */
+/* OM LOGO FLOAT */
 
 .logo-pop{
-height:70px;
+height:72px;
 background:white;
 border-radius:50%;
 padding:8px;
-box-shadow:0px 8px 18px rgba(0,0,0,0.35);
-
-animation:logoFloat 2s ease-in-out infinite alternate;
+box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+animation:floatLogo 2s ease-in-out infinite alternate;
 }
 
 
-/* FLOATING ANIMATION */
-
-@keyframes logoFloat{
-from{
-transform:translateY(0px);
-}
-to{
-transform:translateY(-6px);
-}
+@keyframes floatLogo{
+from{ transform:translateY(0px); }
+to{ transform:translateY(-8px); }
 }
 
 
-/* BRAND TITLE */
+/* TITLE */
 
 .brand-name{
 color:white;
@@ -86,15 +97,151 @@ color:#f0c674;
 transition:0.3s ease;
 }
 
+
+
+/* HERO SECTION */
+
+.hero{
+height:420px;
+background-image:url("https://images.unsplash.com/photo-1606293926075-91b1cabdd1c6");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+
+.hero-overlay{
+background:rgba(75,42,58,0.65);
+padding:60px;
+border-radius:12px;
+text-align:center;
+color:white;
+animation:fadeIn 1.5s ease-in-out;
+}
+
+
+.hero h1{
+font-size:52px;
+letter-spacing:4px;
+}
+
+
+.hero p{
+font-size:20px;
+margin-top:15px;
+margin-bottom:25px;
+}
+
+
+.hero-btn{
+background:#f0c674;
+padding:12px 28px;
+color:black;
+text-decoration:none;
+font-weight:bold;
+border-radius:6px;
+}
+
+
+.hero-btn:hover{
+background:white;
+transition:.3s;
+}
+
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+
+
+/* FEATURES */
+
+.features{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:80px;
+padding-bottom:60px;
+}
+
+
+.card{
+background:white;
+padding:30px;
+width:260px;
+border-radius:12px;
+box-shadow:0px 6px 18px rgba(0,0,0,0.15);
+text-align:center;
+transition:.3s;
+}
+
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0px 12px 28px rgba(0,0,0,0.25);
+}
+
+
+.card h2{
+color:#4b2a3a;
+margin-bottom:15px;
+}
+
+
+
+/* DEMO SECTION */
+
+.demo-section{
+text-align:center;
+margin-top:60px;
+padding:50px;
+background:#f7f3ef;
+}
+
+
+.verse{
+font-size:28px;
+color:#4b2a3a;
+margin-top:20px;
+}
+
+
+.meaning{
+margin-top:15px;
+font-size:18px;
+color:#444;
+}
+
+
+
+/* ABOUT PREVIEW */
+
+.about-preview{
+text-align:center;
+padding:70px;
+background:#4b2a3a;
+color:white;
+margin-top:60px;
+}
+
 </style>
+
 </head>
 
+
 <body>
+
+
 {% include "navbar.html" %}
 
- 
 
 
+<!-- HERO -->
 
 <div class="hero">
 
@@ -115,13 +262,83 @@ Try Translation →
 
 </div>
 
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="card">
+<h2>Meter Detection</h2>
 <p>
-
-Automatic Meter Detection • Translation • Rhythmic Chant Generation
-
+Automatically detects Sanskrit Chandas like
+Anushtubh, Trishtubh and more.
 </p>
+</div>
+
+<div class="card">
+<h2>Smart Translation</h2>
+<p>
+Translate Sanskrit verses into meaningful English instantly.
+</p>
+</div>
+
+<div class="card">
+<h2>Melodic Chanting</h2>
+<p>
+Hear verses recited with rhythm-aware pronunciation clarity.
+</p>
+</div>
 
 </div>
+
+
+
+<!-- DEMO -->
+
+<div class="demo-section">
+
+<h2>Example Sanskrit Verse</h2>
+
+<p class="verse">
+कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।
+</p>
+
+<p class="meaning">
+"You have the right to perform action,
+but not to the fruits of action."
+</p>
+
+<br>
+
+<a href="/chant" class="hero-btn">
+Listen Chant →
+</a>
+
+</div>
+
+
+
+<!-- ABOUT -->
+
+<div class="about-preview">
+
+<h2>About Vakaya Vani</h2>
+
+<p>
+Vakaya Vani is an AI-powered Sanskrit recitation engine that combines
+linguistic meter detection, semantic translation and rhythmic chant synthesis
+to preserve India's oral knowledge traditions using modern technology.
+</p>
+
+<br>
+
+<a href="/about" class="hero-btn">
+Learn More →
+</a>
+
+</div>
+
 
 </body>
 </html>
