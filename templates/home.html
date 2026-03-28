@@ -4,13 +4,16 @@
 <head>
 <title>Sanskrit Recitation Engine</title>
 <style>
-  .navbar{
+  /* NAVBAR */
+
+.navbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
 background:#4b2a3a;
-padding:18px 60px;
+padding:20px 60px;
 position:relative;
+height:80px;
 }
 
 
@@ -19,8 +22,8 @@ position:relative;
 .nav-left a{
 color:white;
 text-decoration:none;
-margin-right:25px;
-font-size:16px;
+margin-right:30px;
+font-size:17px;
 letter-spacing:1px;
 }
 
@@ -30,33 +33,56 @@ letter-spacing:1px;
 .nav-right a{
 color:white;
 text-decoration:none;
-margin-left:25px;
-font-size:16px;
+margin-left:30px;
+font-size:17px;
 letter-spacing:1px;
 }
 
 
-/* CENTER LOGO */
+/* CENTER LOGO WRAPPER */
 
-.nav-center{
+.logo-wrapper{
 position:absolute;
 left:50%;
-transform:translateX(-50%);
+top:0;
+transform:translate(-50%, -35%);
 text-align:center;
 }
 
 
-.logo{
-height:48px;
-margin-bottom:4px;
+/* POP-OUT OM LOGO */
+
+.logo-pop{
+height:70px;
+background:white;
+border-radius:50%;
+padding:8px;
+box-shadow:0px 8px 18px rgba(0,0,0,0.35);
+
+animation:logoFloat 2s ease-in-out infinite alternate;
 }
 
 
+/* FLOATING ANIMATION */
+
+@keyframes logoFloat{
+from{
+transform:translateY(0px);
+}
+to{
+transform:translateY(-6px);
+}
+}
+
+
+/* BRAND TITLE */
+
 .brand-name{
 color:white;
-font-size:20px;
+font-size:22px;
 letter-spacing:4px;
 font-weight:bold;
+margin-top:6px;
 }
 
 
@@ -65,55 +91,6 @@ font-weight:bold;
 .navbar a:hover{
 color:#f0c674;
 transition:0.3s ease;
-}
-
-body{
-margin:0;
-font-family:"Segoe UI";
-background:#f6f2ec;
-}
-
-.navbar{
-background:#4b2a3a;
-padding:20px;
-}
-
-.navbar a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-.hero{
-
-height:450px;
-
-background:
-linear-gradient(rgba(60,30,40,0.7),
-rgba(60,30,40,0.7)),
-
-url("https://images.unsplash.com/photo-1506126613408-eca07ce68773");
-
-background-size:cover;
-
-color:white;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-
-}
-
-.hero h1{
-font-size:50px;
-}
-
-.hero p{
-font-size:20px;
-max-width:600px;
 }
 
 </style>
