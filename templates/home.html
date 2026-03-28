@@ -1,9 +1,8 @@
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
+
 <title>Vakaya Vani</title>
 
 <style>
@@ -14,7 +13,8 @@ background:#ece7e4;
 font-family:Georgia, serif;
 }
 
-/* HERO BACKGROUND */
+
+/* HERO SECTION */
 
 .hero{
 height:80vh;
@@ -24,50 +24,31 @@ background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
 }
 
-/* DARK OVERLAY */
-
-.hero::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.35);
-}
-
-/* CENTER CARD */
 
 .hero-box{
-position:relative;
 background:#6f5a61;
 padding:60px 120px;
 border-radius:20px;
 text-align:center;
 color:white;
 box-shadow:0px 12px 35px rgba(0,0,0,0.4);
-
-animation:fadeUp 1.5s ease;
 }
 
-/* TITLE */
 
 .hero-box h1{
 font-size:58px;
 letter-spacing:6px;
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
-/* SUBTITLE */
 
 .hero-box p{
 font-size:20px;
 letter-spacing:2px;
-opacity:0.9;
 }
+
 
 /* BUTTON */
 
@@ -80,27 +61,10 @@ padding:14px 34px;
 font-size:18px;
 border-radius:8px;
 text-decoration:none;
-transition:0.3s;
 }
 
-.hero-btn:hover{
-background:#f5d76e;
-}
 
-/* ANIMATION */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0px);
-}
-}
-
-/* FEATURE SECTION */
+/* FEATURES */
 
 .features{
 display:flex;
@@ -109,7 +73,6 @@ gap:60px;
 padding:90px 80px;
 }
 
-/* FEATURE CARDS */
 
 .card{
 background:white;
@@ -118,22 +81,43 @@ border-radius:16px;
 width:260px;
 text-align:center;
 box-shadow:0px 8px 25px rgba(0,0,0,0.15);
-transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-10px);
-}
 
 .card h2{
 color:#4b2a3a;
 letter-spacing:2px;
-margin-bottom:15px;
 }
 
-.card p{
-font-size:15px;
-color:#333;
+
+/* EXAMPLE SECTION */
+
+.example{
+text-align:center;
+padding:80px;
+}
+
+
+.example h2{
+letter-spacing:3px;
+color:#4b2a3a;
+}
+
+
+.verse{
+font-size:26px;
+margin-top:20px;
+}
+
+
+.translation{
+margin-top:10px;
+font-size:18px;
+color:#555;
+}
+
+audio{
+margin-top:20px;
 }
 
 </style>
@@ -143,6 +127,7 @@ color:#333;
 <body>
 
 {% include "navbar.html" %}
+
 
 <div class="hero">
 
@@ -163,6 +148,7 @@ Try Translation →
 </div>
 
 
+
 <div class="features">
 
 <div class="card">
@@ -172,12 +158,14 @@ Automatically detects Sanskrit Chandas like Anushtubh and Trishtubh.
 </p>
 </div>
 
+
 <div class="card">
 <h2>Smart Translation</h2>
 <p>
 Translate Sanskrit verses into meaningful English instantly.
 </p>
 </div>
+
 
 <div class="card">
 <h2>Melodic Chanting</h2>
@@ -187,6 +175,30 @@ Hear verses recited with rhythm-aware pronunciation clarity.
 </div>
 
 </div>
+
+
+
+<!-- EXAMPLE DEMO -->
+
+<div class="example">
+
+<h2>Example Chant Demonstration</h2>
+
+<div class="verse">
+कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।
+</div>
+
+<div class="translation">
+You have the right to action alone, never to its fruits.
+</div>
+
+
+<audio controls>
+<source src="/static/audio/output.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
 
 </body>
 </html>
