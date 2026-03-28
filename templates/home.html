@@ -50,21 +50,22 @@ text-decoration:none;
 }
 
 
-/* CENTER LOGO */
+/* CENTER LOGO POSITION FIX */
 
 .logo-wrapper{
 position:absolute;
 left:50%;
-top:0;
-transform:translate(-50%, -40%);
+top:-25px;
+transform:translateX(-50%);
+z-index:999;
 text-align:center;
 }
 
 
-/* OM LOGO FLOAT */
+/* OM LOGO FLOATING */
 
 .logo-pop{
-height:72px;
+height:85px;
 background:white;
 border-radius:50%;
 padding:8px;
@@ -73,13 +74,15 @@ animation:floatLogo 2s ease-in-out infinite alternate;
 }
 
 
+/* FLOAT ANIMATION */
+
 @keyframes floatLogo{
 from{ transform:translateY(0px); }
-to{ transform:translateY(-8px); }
+to{ transform:translateY(-6px); }
 }
 
 
-/* TITLE */
+/* BRAND TITLE */
 
 .brand-name{
 color:white;
@@ -90,7 +93,7 @@ margin-top:6px;
 }
 
 
-/* HOVER EFFECT */
+/* NAVBAR HOVER */
 
 .navbar a:hover{
 color:#f0c674;
@@ -99,23 +102,23 @@ transition:0.3s ease;
 
 
 
-/* HERO SECTION */
+/* HERO SECTION (REDUCED SIZE) */
 
 .hero{
-height:420px;
+height:300px;
+margin-top:40px;
 background-image:url("https://images.unsplash.com/photo-1606293926075-91b1cabdd1c6");
 background-size:cover;
 background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
 }
 
 
 .hero-overlay{
 background:rgba(75,42,58,0.65);
-padding:60px;
+padding:40px;
 border-radius:12px;
 text-align:center;
 color:white;
@@ -124,21 +127,22 @@ animation:fadeIn 1.5s ease-in-out;
 
 
 .hero h1{
-font-size:52px;
-letter-spacing:4px;
+font-size:42px;
+letter-spacing:3px;
+margin:0;
 }
 
 
 .hero p{
-font-size:20px;
-margin-top:15px;
-margin-bottom:25px;
+font-size:18px;
+margin-top:12px;
+margin-bottom:20px;
 }
 
 
 .hero-btn{
 background:#f0c674;
-padding:12px 28px;
+padding:10px 24px;
 color:black;
 text-decoration:none;
 font-weight:bold;
@@ -153,27 +157,27 @@ transition:.3s;
 
 
 @keyframes fadeIn{
-from{opacity:0; transform:translateY(30px);}
+from{opacity:0; transform:translateY(20px);}
 to{opacity:1; transform:translateY(0);}
 }
 
 
 
-/* FEATURES */
+/* FEATURES SECTION */
 
 .features{
 display:flex;
 justify-content:center;
-gap:40px;
-margin-top:80px;
-padding-bottom:60px;
+gap:30px;
+margin-top:60px;
+padding-bottom:40px;
 }
 
 
 .card{
 background:white;
-padding:30px;
-width:260px;
+padding:25px;
+width:240px;
 border-radius:12px;
 box-shadow:0px 6px 18px rgba(0,0,0,0.15);
 text-align:center;
@@ -182,14 +186,14 @@ transition:.3s;
 
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
 box-shadow:0px 12px 28px rgba(0,0,0,0.25);
 }
 
 
 .card h2{
 color:#4b2a3a;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 
@@ -198,22 +202,22 @@ margin-bottom:15px;
 
 .demo-section{
 text-align:center;
-margin-top:60px;
-padding:50px;
+margin-top:50px;
+padding:40px;
 background:#f7f3ef;
 }
 
 
 .verse{
-font-size:28px;
+font-size:26px;
 color:#4b2a3a;
-margin-top:20px;
+margin-top:15px;
 }
 
 
 .meaning{
-margin-top:15px;
-font-size:18px;
+margin-top:10px;
+font-size:17px;
 color:#444;
 }
 
@@ -223,10 +227,10 @@ color:#444;
 
 .about-preview{
 text-align:center;
-padding:70px;
+padding:50px;
 background:#4b2a3a;
 color:white;
-margin-top:60px;
+margin-top:50px;
 }
 
 </style>
@@ -241,7 +245,7 @@ margin-top:60px;
 
 
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 
 <div class="hero">
 
@@ -250,8 +254,7 @@ margin-top:60px;
 <h1>Vakaya Vani</h1>
 
 <p>
-AI-powered Sanskrit Verse Translation,
-Meter Detection & Melodic Chant Generation
+AI-powered Sanskrit Verse Translation • Meter Detection • Melodic Chant Generation
 </p>
 
 <a href="/translate" class="hero-btn">
@@ -271,8 +274,7 @@ Try Translation →
 <div class="card">
 <h2>Meter Detection</h2>
 <p>
-Automatically detects Sanskrit Chandas like
-Anushtubh, Trishtubh and more.
+Automatically detects Sanskrit Chandas like Anushtubh and Trishtubh.
 </p>
 </div>
 
@@ -294,7 +296,7 @@ Hear verses recited with rhythm-aware pronunciation clarity.
 
 
 
-<!-- DEMO -->
+<!-- DEMO VERSE -->
 
 <div class="demo-section">
 
@@ -305,8 +307,7 @@ Hear verses recited with rhythm-aware pronunciation clarity.
 </p>
 
 <p class="meaning">
-"You have the right to perform action,
-but not to the fruits of action."
+"You have the right to perform action, but not to the fruits of action."
 </p>
 
 <br>
@@ -319,16 +320,15 @@ Listen Chant →
 
 
 
-<!-- ABOUT -->
+<!-- ABOUT SECTION -->
 
 <div class="about-preview">
 
 <h2>About Vakaya Vani</h2>
 
 <p>
-Vakaya Vani is an AI-powered Sanskrit recitation engine that combines
-linguistic meter detection, semantic translation and rhythmic chant synthesis
-to preserve India's oral knowledge traditions using modern technology.
+Vakaya Vani is an AI-powered Sanskrit recitation engine combining linguistic meter detection,
+semantic translation and rhythmic chant synthesis to preserve India's oral knowledge traditions.
 </p>
 
 <br>
