@@ -1,33 +1,36 @@
 <style>
 
+/* NAVBAR CONTAINER */
+
 .navbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
 background:#4b2a3a;
-padding:22px 80px;
-height:90px;
+padding:24px 140px;
+height:100px;
 position:relative;
 font-family:Georgia, serif;
 }
 
-/* LEFT SIDE */
+
+/* LEFT LINKS */
 
 .nav-left{
 display:flex;
 gap:140px;
 }
 
-
-
 .nav-left a{
 color:white;
 text-decoration:none;
 font-size:18px;
 letter-spacing:2px;
+transition:0.3s ease;
 }
 
-/* RIGHT SIDE */
+
+/* RIGHT LINKS */
 
 .nav-right{
 display:flex;
@@ -39,7 +42,9 @@ color:white;
 text-decoration:none;
 font-size:18px;
 letter-spacing:2px;
+transition:0.3s ease;
 }
+
 
 /* CENTER LOGO BLOCK */
 
@@ -51,37 +56,70 @@ transform:translate(-50%, -50%);
 text-align:center;
 }
 
-/* OM LOGO */
 
-.logo-circle{
-height:60px;
-width:60px;
-background:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-color:#d4af37;
-box-shadow:0px 5px 15px rgba(0,0,0,0.4);
+/* CUSTOM LOGO IMAGE */
+
+.logo-img{
+height:80px;
+display:block;
+margin:auto;
+
+/* SOFT GOLD GLOW */
+
+filter:
+drop-shadow(0px 0px 6px rgba(212,175,55,0.5))
+drop-shadow(0px 0px 12px rgba(212,175,55,0.35));
+
+transition:0.4s ease;
+
+animation:logoGlow 3s ease-in-out infinite alternate;
 }
 
-/* BRAND TITLE */
+
+/* GLOW ANIMATION */
+
+@keyframes logoGlow{
+
+from{
+filter:
+drop-shadow(0px 0px 4px rgba(212,175,55,0.35))
+drop-shadow(0px 0px 8px rgba(212,175,55,0.25));
+}
+
+to{
+filter:
+drop-shadow(0px 0px 12px rgba(212,175,55,0.7))
+drop-shadow(0px 0px 22px rgba(212,175,55,0.45));
+}
+
+}
+
+
+/* HOVER EFFECT */
+
+.logo-img:hover{
+transform:scale(1.08);
+}
+
+
+/* BRAND TEXT */
 
 .brand-name{
 color:white;
-font-size:20px;
+font-size:22px;
 letter-spacing:6px;
 margin-top:6px;
 }
 
-/* HOVER EFFECT */
+
+/* LINK HOVER COLOR */
 
 .navbar a:hover{
 color:#d4af37;
 }
 
 </style>
+
 
 
 <div class="navbar">
@@ -91,14 +129,20 @@ color:#d4af37;
 <a href="/translate">Translation</a>
 </div>
 
+
 <div class="logo-wrapper">
-<div class="logo-circle">ॐ</div>
+
+<img src="/static/images/logo.jpeg" class="logo-img">
+
 <div class="brand-name">Vakaya Vani</div>
+
 </div>
+
 
 <div class="nav-right">
 <a href="/chant">Chant</a>
 <a href="/about">About</a>
 </div>
+
 
 </div>
