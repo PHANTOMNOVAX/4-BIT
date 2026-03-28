@@ -5,12 +5,13 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 background:#4b2a3a;
-padding:24px 90px;
+padding:22px 80px;
+height:90px;
 position:relative;
 font-family:Georgia, serif;
 }
 
-/* LEFT SIDE LINKS */
+/* LEFT SIDE */
 
 .nav-left{
 display:flex;
@@ -22,10 +23,9 @@ color:white;
 text-decoration:none;
 font-size:18px;
 letter-spacing:2px;
-transition:0.3s ease;
 }
 
-/* RIGHT SIDE LINKS */
+/* RIGHT SIDE */
 
 .nav-right{
 display:flex;
@@ -37,7 +37,6 @@ color:white;
 text-decoration:none;
 font-size:18px;
 letter-spacing:2px;
-transition:0.3s ease;
 }
 
 /* CENTER LOGO BLOCK */
@@ -50,47 +49,33 @@ transform:translate(-50%, -50%);
 text-align:center;
 }
 
-/* OM LOGO STYLE */
+/* OM LOGO */
 
 .logo-circle{
-height:68px;
-width:68px;
+height:60px;
+width:60px;
 background:white;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:36px;
-color:#d4af37; /* GOLD OM */
-box-shadow:0px 6px 18px rgba(0,0,0,0.35);
-
-animation:logoFloat 2s ease-in-out infinite alternate;
+font-size:32px;
+color:#d4af37;
+box-shadow:0px 5px 15px rgba(0,0,0,0.4);
 }
 
-/* FLOAT ANIMATION */
-
-@keyframes logoFloat{
-from{
-transform:translateY(-2px);
-}
-to{
-transform:translateY(6px);
-}
-}
-
-/* BRAND NAME */
+/* BRAND TITLE */
 
 .brand-name{
 color:white;
-font-size:22px;
+font-size:20px;
 letter-spacing:6px;
-margin-top:8px;
+margin-top:6px;
 }
 
 /* HOVER EFFECT */
 
-.nav-left a:hover,
-.nav-right a:hover{
+.navbar a:hover{
 color:#d4af37;
 }
 
@@ -104,12 +89,10 @@ color:#d4af37;
 <a href="/translate">Translation</a>
 </div>
 
-
 <div class="logo-wrapper">
 <div class="logo-circle">ॐ</div>
 <div class="brand-name">Vakaya Vani</div>
 </div>
-
 
 <div class="nav-right">
 <a href="/chant">Chant</a>
