@@ -2,412 +2,183 @@
 <html>
 
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-
-<title>Vakaya Vani</title>
+<title>Vakya Vani</title>
 
 <style>
 
-
-/* PAGE BACKGROUND */
-
 body{
 
 margin:0;
 
-font-family:"Inter", sans-serif;
-
-background:
-
-linear-gradient(rgba(255,255,255,0.9),
-rgba(255,255,255,0.9)),
-
-url("https://www.transparenttextures.com/patterns/cream-paper.png");
-
-color:#2e2e2e;
-
-}
-
-
-
-/* MAIN HEADINGS */
-
-h1{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:5px;
-
-font-size:52px;
-
-color:#4b2a3a;
-
-animation:fadeDown 1.2s ease;
-
-}
-
-
-
-/* SECTION HEADINGS */
-
-h2{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:3px;
-
-color:#4b2a3a;
-
-}
-
-
-
-/* NAVBAR LINKS */
-
-.nav-left a,
-.nav-right a{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:3px;
-
-font-size:19px;
-
-color:white;
-
-text-decoration:none;
-
-transition:0.3s ease;
-
-}
-
-
-.navbar a:hover{
-
-color:#d4af37;
-
-}
-
-
-
-/* SANSKRIT VERSE TEXT */
-
-.verse{
-
-font-family:"Noto Serif Devanagari", serif;
-
-font-size:40px;
-
-letter-spacing:2px;
-
-line-height:1.8;
-
-color:#3a2a2a;
-
-animation:verseFade 1.2s ease;
-
-}
-
-
-
-/* TRANSLATION TEXT */
-
-.translation{
-
-font-size:18px;
-
-color:#666;
-
-margin-top:10px;
-
-}
-
-
-
-/* BUTTON STYLE */
-
-button,
-.hero-btn{
-
-background:#d4af37;
-
-color:black;
-
-border:none;
-
-padding:14px 32px;
-
-font-size:18px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-transition:0.3s ease;
-
-}
-
-
-button:hover,
-.hero-btn:hover{
-
-background:#f2d06b;
-
-transform:translateY(-2px);
-
-}
-
-
-
-/* CARD STYLE */
-
-.card{
-
-background:white;
-
-padding:40px;
-
-border-radius:18px;
-
-box-shadow:
-
-0px 10px 30px rgba(0,0,0,0.12);
-
-transition:0.3s ease;
-
-}
-
-
-.card:hover{
-
-transform:translateY(-8px);
-
-}
-
-
-
-/* INFO BOX STYLE */
-
-.info-box{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:2px;
-
-padding:18px 35px;
-
-border-radius:12px;
-
-background:white;
-
-display:inline-block;
-
-margin:10px;
-
-box-shadow:0px 6px 20px rgba(0,0,0,0.12);
-
-}
-
-
-
-/* WORD HIGHLIGHT DURING CHANT */
-
-.highlight{
-
-color:#d4af37;
-
-text-shadow:
-
-0px 0px 10px rgba(212,175,55,0.7),
-
-0px 0px 25px rgba(212,175,55,0.45);
-
-transform:scale(1.25);
-
-transition:0.35s ease;
-
-}
-
-
-
-/* PAGE ENTRY ANIMATION */
-
-@keyframes fadeDown{
-
-from{
-
-opacity:0;
-
-transform:translateY(-30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-/* VERSE ENTRY ANIMATION */
-
-@keyframes verseFade{
-
-from{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-h1{
-
-font-size:36px;
-
-}
-
-.verse{
-
-font-size:28px;
-
-}
-
-}
-
-body{
-margin:0;
-background:#ece7e4;
 font-family:Georgia, serif;
+
+background:url("/static/images/bg.jpg") center/cover fixed;
+
 }
 
 
 /* HERO SECTION */
 
 .hero{
-height:80vh;
-background-image:url("/static/images/bg.jpeg");
-background-size:cover;
-background-position:center;
+
+height:90vh;
+
 display:flex;
-align-items:center;
+
 justify-content:center;
+
+align-items:center;
+
 }
 
 
-.hero-box{
-background:#6f5a61;
-padding:60px 120px;
-border-radius:20px;
+/* CENTER CARD */
+
+.hero-card{
+
+background:rgba(90,60,70,.85);
+
+padding:70px 90px;
+
+border-radius:22px;
+
 text-align:center;
-color:white;
-box-shadow:0px 12px 35px rgba(0,0,0,0.4);
+
+animation:fadeUp 1.5s ease;
+
 }
 
 
-.hero-box h1{
-font-size:58px;
-letter-spacing:6px;
-margin-bottom:10px;
+/* TITLE */
+
+.hero-card h1{
+
+font-size:60px;
+
+letter-spacing:8px;
+
+color:#fff;
+
+margin-bottom:20px;
+
 }
 
 
-.hero-box p{
-font-size:20px;
+/* SUBTITLE */
+
+.hero-card p{
+
+font-size:22px;
+
+color:#f4e2b6;
+
 letter-spacing:2px;
+
+margin-bottom:30px;
+
 }
 
 
 /* BUTTON */
 
 .hero-btn{
-display:inline-block;
-margin-top:30px;
+
 background:#d4af37;
-color:black;
-padding:14px 34px;
-font-size:18px;
-border-radius:8px;
+
+padding:16px 40px;
+
+font-size:20px;
+
+border-radius:12px;
+
 text-decoration:none;
+
+color:black;
+
+transition:.3s ease;
+
 }
 
 
-/* FEATURES */
+/* BUTTON HOVER */
+
+.hero-btn:hover{
+
+background:#f2d06b;
+
+transform:translateY(-3px);
+
+box-shadow:0px 6px 16px rgba(0,0,0,.3);
+
+}
+
+
+/* FEATURE SECTION */
 
 .features{
+
 display:flex;
+
 justify-content:center;
-gap:60px;
-padding:90px 80px;
+
+gap:50px;
+
+margin-top:-100px;
+
+padding-bottom:80px;
+
 }
 
+
+/* FEATURE CARDS */
 
 .card{
+
 background:white;
+
 padding:45px;
-border-radius:16px;
+
 width:260px;
+
+border-radius:18px;
+
 text-align:center;
-box-shadow:0px 8px 25px rgba(0,0,0,0.15);
+
+box-shadow:0px 10px 30px rgba(0,0,0,.15);
+
+transition:.4s ease;
+
 }
 
 
-.card h2{
-color:#4b2a3a;
-letter-spacing:2px;
+.card:hover{
+
+transform:translateY(-10px);
+
 }
 
 
-/* EXAMPLE SECTION */
+/* ANIMATION */
 
-.example{
-text-align:center;
-padding:80px;
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(80px);
+
 }
 
+to{
 
-.example h2{
-letter-spacing:3px;
-color:#4b2a3a;
+opacity:1;
+
+transform:translateY(0);
+
 }
 
-
-.verse{
-font-size:26px;
-margin-top:20px;
-}
-
-
-.translation{
-margin-top:10px;
-font-size:18px;
-color:#555;
-}
-
-audio{
-margin-top:20px;
 }
 
 </style>
@@ -421,16 +192,20 @@ margin-top:20px;
 
 <div class="hero">
 
-<div class="hero-box">
+<div class="hero-card">
 
-<h1>Vakaya Vani</h1>
+<h1>Vakya Vani</h1>
 
 <p>
+
 Where Sanskrit Meets Sound, Rhythm and Meaning
+
 </p>
 
 <a href="/translate" class="hero-btn">
+
 Try Translation →
+
 </a>
 
 </div>
@@ -438,70 +213,49 @@ Try Translation →
 </div>
 
 
-
 <div class="features">
 
 <div class="card">
+
 <h2>Meter Detection</h2>
+
 <p>
-Automatically detects Sanskrit Chandas like Anushtubh and Trishtubh.
+
+Automatically detects Sanskrit Chandas like Anushtubh & Trishtubh.
+
 </p>
+
 </div>
 
 
 <div class="card">
+
 <h2>Smart Translation</h2>
+
 <p>
-Translate Sanskrit verses into meaningful English instantly.
+
+Instantly translates Sanskrit verses into meaningful English.
+
 </p>
+
 </div>
 
 
 <div class="card">
+
 <h2>Melodic Chanting</h2>
+
 <p>
+
 Hear verses recited with rhythm-aware pronunciation clarity.
+
 </p>
-</div>
 
 </div>
 
-
-
-<!-- EXAMPLE DEMO -->
-
-<div class="example">
-
-<h2>Example Chant Demonstration</h2>
-
-<div class="verse">
-कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।
-</div>
-
-<div class="translation">
-You have the right to action alone, never to its fruits.
 </div>
 
 
-</div>
-
-<div style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#4b2a3a;
-padding:12px;
-border-radius:50%;
-box-shadow:0px 6px 15px rgba(0,0,0,0.3);
-z-index:999;
-">
-
-<audio autoplay loop>
-
-<source src="/static/audio/home_music.mp3" type="audio/mpeg">
-
-</audio>
-
-</div>
 </body>
+
 </html>
