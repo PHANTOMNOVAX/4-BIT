@@ -121,7 +121,265 @@ color:#d4af37;
 </style>
 
 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+<style>
+
+/* PAGE BACKGROUND */
+
+body{
+margin:0;
+font-family:"Inter", sans-serif;
+background:
+linear-gradient(rgba(255,255,255,0.92),
+rgba(255,255,255,0.92)),
+url("https://www.transparenttextures.com/patterns/cream-paper.png");
+color:#2e2e2e;
+}
+
+
+/* MAIN TITLE STYLE */
+
+h1{
+font-family:"Playfair Display", serif;
+letter-spacing:6px;
+font-size:54px;
+color:#4b2a3a;
+animation:titleFade 1.2s ease;
+}
+
+
+/* SECTION TITLES */
+
+h2{
+font-family:"Playfair Display", serif;
+letter-spacing:3px;
+color:#4b2a3a;
+}
+
+
+/* NAVBAR LINKS */
+
+.nav-left a,
+.nav-right a{
+font-family:"Playfair Display", serif;
+letter-spacing:3px;
+font-size:19px;
+transition:.3s ease;
+}
+
+
+/* NAVBAR HOVER EFFECT */
+
+.navbar a:hover{
+color:#d4af37;
+}
+
+
+/* SANSKRIT VERSE STYLE */
+
+.verse,
+.word{
+font-family:"Noto Serif Devanagari", serif;
+font-size:40px;
+letter-spacing:2px;
+line-height:1.9;
+color:#3a2a2a;
+animation:verseAppear 1.2s ease;
+}
+
+
+/* TRANSLATION TEXT */
+
+.translation{
+font-size:19px;
+color:#666;
+margin-top:12px;
+font-style:italic;
+}
+
+
+/* BUTTON STYLE */
+
+button,
+.hero-btn{
+
+background:#d4af37;
+color:black;
+
+border:none;
+
+padding:14px 34px;
+
+font-size:18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s ease;
+
+}
+
+
+/* BUTTON HOVER */
+
+button:hover,
+.hero-btn:hover{
+
+background:#f2d06b;
+
+transform:translateY(-3px);
+
+box-shadow:0px 6px 14px rgba(0,0,0,0.2);
+
+}
+
+
+/* CARD DESIGN */
+
+.card{
+
+background:white;
+
+padding:40px;
+
+border-radius:18px;
+
+box-shadow:
+
+0px 12px 30px rgba(0,0,0,0.12);
+
+transition:.35s ease;
+
+}
+
+
+/* CARD HOVER FLOAT */
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+
+/* INFO BOX (Meter / Meaning) */
+
+.info-box{
+
+font-family:"Playfair Display", serif;
+
+letter-spacing:2px;
+
+padding:18px 40px;
+
+border-radius:14px;
+
+background:white;
+
+display:inline-block;
+
+margin:12px;
+
+box-shadow:0px 8px 22px rgba(0,0,0,0.15);
+
+}
+
+
+/* WORD HIGHLIGHT DURING CHANT */
+
+.highlight{
+
+color:#d4af37;
+
+text-shadow:
+
+0px 0px 12px rgba(212,175,55,0.7),
+
+0px 0px 28px rgba(212,175,55,0.45);
+
+transform:scale(1.25);
+
+transition:.35s ease;
+
+}
+
+
+/* PAGE ENTRY ANIMATION */
+
+@keyframes titleFade{
+
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* VERSE ENTRY ANIMATION */
+
+@keyframes verseAppear{
+
+from{
+opacity:0;
+transform:translateY(35px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* SECTION SPACING IMPROVEMENT */
+
+.section{
+margin-top:80px;
+margin-bottom:80px;
+}
+
+
+/* AUDIO PLAYER CARD STYLE */
+
+.audio-box{
+
+background:white;
+
+padding:20px;
+
+border-radius:14px;
+
+box-shadow:0px 8px 25px rgba(0,0,0,0.15);
+
+display:inline-block;
+
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+h1{
+font-size:36px;
+}
+
+.word{
+font-size:28px;
+}
+
+}
+
+</style>
 <div class="navbar">
 
 <div class="nav-left">
