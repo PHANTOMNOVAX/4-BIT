@@ -1,207 +1,26 @@
 
-<!DOCTYPE html>
-<html>
+<div class="navbar">
 
-<head>
-<title>Translation Tool</title>
+    <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/translate">Translation</a>
+    </div>
 
-<style>
-/* NAVBAR */
+    <div class="logo-container">
 
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#4b2a3a;
-padding:18px 70px;
-position:relative;
-height:85px;
-}
+        <div class="logo-circle">
+            ॐ
+        </div>
 
+        <div class="logo-text">
+            Vakaya Vani
+        </div>
 
-/* LEFT LINKS */
+    </div>
 
-.nav-left a{
-margin-right:45px;
-color:white;
-text-decoration:none;
-font-size:18px;
-letter-spacing:1px;
-}
-
-
-/* RIGHT LINKS */
-
-.nav-right a{
-margin-left:45px;
-color:white;
-text-decoration:none;
-font-size:18px;
-letter-spacing:1px;
-}
-
-
-/* CENTER LOGO */
-
-.logo-container{
-position:absolute;
-left:50%;
-top:-28px;
-transform:translateX(-50%);
-text-align:center;
-}
-
-
-/* OM CIRCLE */
-
-.logo-circle{
-width:70px;
-height:70px;
-background:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:36px;
-color:#4b2a3a;
-font-weight:bold;
-
-box-shadow:0px 8px 25px rgba(0,0,0,0.35);
-
-animation:floatLogo 2s ease-in-out infinite alternate;
-}
-
-
-/* FLOAT EFFECT */
-
-@keyframes floatLogo{
-from{ transform:translateY(0px);}
-to{ transform:translateY(-7px);}
-}
-
-
-/* BRAND NAME */
-
-.logo-text{
-color:white;
-font-size:22px;
-letter-spacing:4px;
-margin-top:6px;
-font-weight:bold;
-}
-
-
-/* HOVER EFFECT */
-
-.navbar a:hover{
-color:#f0c674;
-transition:.3s;
-}
-body{
-font-family:"Segoe UI";
-background:#f6f2ec;
-}
-
-.navbar{
-background:#4b2a3a;
-padding:20px;
-}
-
-.navbar a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-.container{
-width:70%;
-margin:auto;
-margin-top:40px;
-}
-
-textarea{
-width:100%;
-height:140px;
-font-size:18px;
-padding:10px;
-}
-
-button{
-background:#7a3e65;
-color:white;
-padding:14px 26px;
-border:none;
-font-size:18px;
-margin-top:20px;
-}
-
-.card{
-background:white;
-padding:25px;
-margin-top:20px;
-border-radius:10px;
-}
-
-</style>
-
-</head>
-
-<body>
-{% include "navbar.html" %}
-
-
-
-<div class="container">
-
-<h2>Enter Sanskrit Verse</h2>
-
-<form method="POST">
-
-<textarea name="verse"></textarea>
-
-<br>
-
-<button type="submit">Generate Recitation</button>
-
-</form>
-
-
-{% if meter %}
-
-<div class="card">
-
-<h3>Detected Meter</h3>
-
-<p>{{ meter }}</p>
+    <div class="nav-right">
+        <a href="/chant">Chant</a>
+        <a href="/about">About</a>
+    </div>
 
 </div>
-
-
-<div class="card">
-
-<h3>Translation</h3>
-
-<p>{{ translation }}</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Audio Chant</h3>
-
-<audio controls>
-
-<source src="{{ audio }}">
-
-</audio>
-
-</div>
-
-{% endif %}
-
-</div>
-
-</body>
-</html>
