@@ -9,10 +9,14 @@ app = Flask(__name__)
 app.secret_key = "chant_engine_secret"
 
 
+# HOME PAGE
+
 @app.route("/")
 def home():
     return render_template("home.html")
 
+
+# TRANSLATION PAGE
 
 @app.route("/translate", methods=["GET", "POST"])
 def translate():
@@ -39,6 +43,8 @@ def translate():
     return render_template("translate.html")
 
 
+# CHANT PAGE
+
 @app.route("/chant")
 def chant():
 
@@ -50,21 +56,23 @@ def chant():
 
     audio = session.get("audio", "")
 
-    lines = verse.split("\n") if verse else []
-
     return render_template(
         "chant.html",
-        lines=lines,
+        verse=verse,
         meter=meter,
         translation=translation,
         audio=audio
     )
 
 
+# ABOUT PAGE
+
 @app.route("/about")
 def about():
     return render_template("about.html")
 
 
+# SERVER START
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run(host="0.0.0.0", port=10000, debug=True)
