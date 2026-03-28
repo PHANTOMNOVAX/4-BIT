@@ -7,135 +7,140 @@
 
 <style>
 
-/* BACKGROUND IMAGE RESTORED */
+/* BACKGROUND IMAGE */
 
 body{
-
 margin:0;
-
 font-family:Georgia, serif;
-
-background:url("/static/images/bg.jpeg") center/cover fixed no-repeat;
-
+background:url("/static/images/bg.jpg") center/cover fixed no-repeat;
 }
 
 
 /* HERO SECTION */
 
 .hero{
-
 height:85vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 }
 
 
-/* CENTER CARD */
+/* HERO CARD */
 
 .hero-card{
-
 background:rgba(90,60,70,.88);
-
 padding:70px 100px;
-
 border-radius:22px;
-
 text-align:center;
-
 animation:fadeUp 1.4s ease;
-
 }
 
 
 /* TITLE */
 
 .hero-card h1{
-
 font-size:60px;
-
 letter-spacing:10px;
-
 color:white;
-
 margin-bottom:20px;
-
 }
 
 
 /* SUBTITLE */
 
 .hero-card p{
-
 font-size:22px;
-
 color:#f4e2b6;
-
 letter-spacing:2px;
-
 margin-bottom:30px;
-
 }
 
 
 /* BUTTON */
 
 .hero-btn{
-
 background:#d4af37;
-
 padding:16px 40px;
-
 font-size:20px;
-
 border-radius:12px;
-
 text-decoration:none;
-
 color:black;
-
 transition:.3s ease;
+}
 
+.hero-btn:hover{
+background:#f2d06b;
+transform:translateY(-3px);
+box-shadow:0px 6px 18px rgba(0,0,0,.3);
 }
 
 
-/* BUTTON HOVER */
+/* FEATURES SECTION */
 
-.hero-btn:hover{
+.features{
+display:flex;
+justify-content:center;
+gap:50px;
+padding:80px 60px;
+background:#f4efe9;
+}
 
-background:#f2d06b;
 
-transform:translateY(-3px);
+/* FEATURE CARD */
 
-box-shadow:0px 6px 18px rgba(0,0,0,.3);
+.card{
+background:white;
+padding:40px;
+width:260px;
+border-radius:18px;
+text-align:center;
+box-shadow:0px 10px 30px rgba(0,0,0,.15);
+transition:.4s ease;
+}
 
+.card:hover{
+transform:translateY(-10px);
+}
+
+
+/* EXAMPLE SECTION */
+
+.example{
+text-align:center;
+padding:80px 20px;
+background:#ece4df;
+}
+
+
+/* EXAMPLE VERSE */
+
+.example-verse{
+font-size:32px;
+letter-spacing:3px;
+margin-bottom:20px;
+}
+
+
+/* EXAMPLE TRANSLATION */
+
+.example-meaning{
+font-size:20px;
+color:#444;
 }
 
 
 /* ANIMATION */
 
 @keyframes fadeUp{
-
 from{
-
 opacity:0;
-
 transform:translateY(80px);
-
 }
-
 to{
-
 opacity:1;
-
 transform:translateY(0);
-
 }
-
 }
 
 </style>
@@ -144,18 +149,14 @@ transform:translateY(0);
 
 <body>
 
-
 {% include "navbar.html" %}
 
 
-<!-- BACKGROUND MUSIC (AUTO PLAY) -->
+<!-- BACKGROUND MUSIC -->
 
 <audio autoplay loop hidden>
-
-<source src="/static/audio/home_music.mp3" type="audio/mpeg">
-
+<source src="/static/audio/bg_music.mp3" type="audio/mpeg">
 </audio>
-
 
 
 <!-- HERO SECTION -->
@@ -167,17 +168,69 @@ transform:translateY(0);
 <h1>Vakya Vani</h1>
 
 <p>
-
 Where Sanskrit Meets Sound, Rhythm and Meaning
-
 </p>
 
 <a href="/translate" class="hero-btn">
-
 Try Translation →
-
 </a>
 
+</div>
+
+</div>
+
+
+<!-- FEATURES SECTION -->
+
+<div class="features">
+
+<div class="card">
+
+<h2>Meter Detection</h2>
+
+<p>
+Automatically identifies Sanskrit Chandas such as Anushtubh, Trishtubh and Jagati.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Smart Translation</h2>
+
+<p>
+Transforms Sanskrit verses into clear English meaning instantly.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Melodic Chanting</h2>
+
+<p>
+Generates rhythm-aware chanting based on syllable structure.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- EXAMPLE SECTION -->
+
+<div class="example">
+
+<h2>Example Verse</h2>
+
+<div class="example-verse">
+कर्मण्येवाधिकारस्ते मा फलेषु कदाचन
+</div>
+
+<div class="example-meaning">
+"You have the right to perform your duty, but not to the results."
 </div>
 
 </div>
