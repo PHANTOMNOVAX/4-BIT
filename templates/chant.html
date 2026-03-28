@@ -17,10 +17,36 @@ font-family:Georgia, serif;
 /* PAGE CONTAINER */
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 padding:60px;
 text-align:center;
+}
+
+
+/* TITLE */
+
+h2{
+letter-spacing:3px;
+color:#4b2a3a;
+}
+
+
+/* METER DISPLAY */
+
+.meter{
+margin-top:20px;
+font-size:22px;
+color:#333;
+}
+
+
+/* TRANSLATION DISPLAY */
+
+.translation{
+margin-top:15px;
+font-size:18px;
+color:#555;
 }
 
 
@@ -28,7 +54,7 @@ text-align:center;
 
 #chant-container{
 margin-top:40px;
-line-height:60px;
+line-height:65px;
 }
 
 
@@ -42,12 +68,12 @@ display:inline-block;
 }
 
 
-/* ACTIVE WORD HIGHLIGHT */
+/* ACTIVE WORD */
 
 .highlight{
 color:#d4af37;
 text-shadow:0px 0px 12px rgba(212,175,55,0.9);
-transform:scale(1.15);
+transform:scale(1.18);
 }
 
 
@@ -56,7 +82,6 @@ transform:scale(1.15);
 audio{
 margin-top:40px;
 }
-
 
 </style>
 
@@ -69,7 +94,26 @@ margin-top:40px;
 
 <div class="container">
 
+
 <h2>Live Chant Visualization</h2>
+
+
+<!-- METER -->
+
+{% if meter %}
+<div class="meter">
+Detected Meter: <b>{{ meter }}</b>
+</div>
+{% endif %}
+
+
+<!-- TRANSLATION -->
+
+{% if translation %}
+<div class="translation">
+{{ translation }}
+</div>
+{% endif %}
 
 
 <!-- VERSE DISPLAY -->
@@ -87,11 +131,13 @@ margin-top:40px;
 
 <!-- AUDIO PLAYER -->
 
+{% if audio %}
 <audio id="chant-audio" controls>
 
-<source src="/static/audio/output.mp3" type="audio/mpeg">
+<source src="{{ audio }}" type="audio/mpeg">
 
 </audio>
+{% endif %}
 
 
 </div>
@@ -99,23 +145,26 @@ margin-top:40px;
 
 <script>
 
-/* GET AUDIO + WORDS */
+/* AUDIO + WORD ELEMENTS */
 
 const audio = document.getElementById("chant-audio");
 const words = document.querySelectorAll(".word");
 
 
-/* ESTIMATE TIMING AUTOMATICALLY */
+if(audio){
 
-function highlightWords(){
+audio.addEventListener("play", ()=>{
 
 const totalDuration = audio.duration * 1000;
+
 const timePerWord = totalDuration / words.length;
 
 
-/* RESET */
+/* RESET HIGHLIGHTS */
 
-words.forEach(word => word.classList.remove("highlight"));
+words.forEach(word=>{
+word.classList.remove("highlight");
+});
 
 
 /* START LOOP */
@@ -134,21 +183,20 @@ words[index-1].classList.remove("highlight");
 
 });
 
-}
+});
 
 
-/* START HIGHLIGHT WHEN AUDIO PLAYS */
-
-audio.addEventListener("play", highlightWords);
-
-
-/* RESET WHEN AUDIO ENDS */
+/* RESET AFTER AUDIO ENDS */
 
 audio.addEventListener("ended", ()=>{
 
-words.forEach(word=>word.classList.remove("highlight"));
+words.forEach(word=>{
+word.classList.remove("highlight");
+});
 
 });
+
+}
 
 </script>
 
