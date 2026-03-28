@@ -7,13 +7,15 @@
 
 <style>
 
+/* BACKGROUND IMAGE RESTORED */
+
 body{
 
 margin:0;
 
 font-family:Georgia, serif;
 
-background:url("/static/images/bg.jpg") center/cover fixed;
+background:url("/static/images/bg.jpg") center/cover fixed no-repeat;
 
 }
 
@@ -22,7 +24,7 @@ background:url("/static/images/bg.jpg") center/cover fixed;
 
 .hero{
 
-height:90vh;
+height:85vh;
 
 display:flex;
 
@@ -37,15 +39,15 @@ align-items:center;
 
 .hero-card{
 
-background:rgba(90,60,70,.85);
+background:rgba(90,60,70,.88);
 
-padding:70px 90px;
+padding:70px 100px;
 
 border-radius:22px;
 
 text-align:center;
 
-animation:fadeUp 1.5s ease;
+animation:fadeUp 1.4s ease;
 
 }
 
@@ -56,9 +58,9 @@ animation:fadeUp 1.5s ease;
 
 font-size:60px;
 
-letter-spacing:8px;
+letter-spacing:10px;
 
-color:#fff;
+color:white;
 
 margin-bottom:20px;
 
@@ -109,52 +111,7 @@ background:#f2d06b;
 
 transform:translateY(-3px);
 
-box-shadow:0px 6px 16px rgba(0,0,0,.3);
-
-}
-
-
-/* FEATURE SECTION */
-
-.features{
-
-display:flex;
-
-justify-content:center;
-
-gap:50px;
-
-margin-top:-100px;
-
-padding-bottom:80px;
-
-}
-
-
-/* FEATURE CARDS */
-
-.card{
-
-background:white;
-
-padding:45px;
-
-width:260px;
-
-border-radius:18px;
-
-text-align:center;
-
-box-shadow:0px 10px 30px rgba(0,0,0,.15);
-
-transition:.4s ease;
-
-}
-
-
-.card:hover{
-
-transform:translateY(-10px);
+box-shadow:0px 6px 18px rgba(0,0,0,.3);
 
 }
 
@@ -187,8 +144,21 @@ transform:translateY(0);
 
 <body>
 
+
 {% include "navbar.html" %}
 
+
+<!-- BACKGROUND MUSIC (AUTO PLAY) -->
+
+<audio autoplay loop hidden>
+
+<source src="/static/audio/home_music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+<!-- HERO SECTION -->
 
 <div class="hero">
 
@@ -207,49 +177,6 @@ Where Sanskrit Meets Sound, Rhythm and Meaning
 Try Translation →
 
 </a>
-
-</div>
-
-</div>
-
-
-<div class="features">
-
-<div class="card">
-
-<h2>Meter Detection</h2>
-
-<p>
-
-Automatically detects Sanskrit Chandas like Anushtubh & Trishtubh.
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>Smart Translation</h2>
-
-<p>
-
-Instantly translates Sanskrit verses into meaningful English.
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>Melodic Chanting</h2>
-
-<p>
-
-Hear verses recited with rhythm-aware pronunciation clarity.
-
-</p>
 
 </div>
 
