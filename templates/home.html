@@ -1,254 +1,152 @@
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
-
-<title>Vakaya Vani – Sanskrit Recitation Engine</title>
+<title>Vakaya Vani</title>
 
 <style>
 
-/* PAGE BASE */
-
 body{
 margin:0;
+background:#ece7e4;
 font-family:Georgia, serif;
-background:#f7f3ef;
 }
 
+/* HERO BACKGROUND */
 
-
-/* NAVBAR */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#4b2a3a;
-padding:25px 120px;
-position:relative;
-height:95px;
-}
-
-
-/* LEFT LINKS */
-
-.nav-left a{
-margin-right:70px;
-color:white;
-text-decoration:none;
-font-size:19px;
-letter-spacing:2px;
-}
-
-
-/* RIGHT LINKS */
-
-.nav-right a{
-margin-left:70px;
-color:white;
-text-decoration:none;
-font-size:19px;
-letter-spacing:2px;
-}
-
-
-/* CENTER LOGO */
-
-.logo-container{
-position:absolute;
-left:50%;
-top:-35px;
-transform:translateX(-50%);
-text-align:center;
-}
-
-
-/* GOLD OM */
-
-.logo-circle{
-width:80px;
-height:80px;
-background:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:42px;
-color:#c9a646;
-
-box-shadow:0px 10px 25px rgba(0,0,0,0.35);
-
-animation:floatLogo 2s ease-in-out infinite alternate;
-}
-
-
-@keyframes floatLogo{
-from{transform:translateY(0px);}
-to{transform:translateY(-8px);}
-}
-
-
-/* BRAND NAME */
-
-.logo-text{
-color:white;
-font-size:24px;
-letter-spacing:6px;
-margin-top:8px;
-font-weight:bold;
-}
-
-
-/* NAV HOVER */
-
-.navbar a:hover{
-color:#c9a646;
-transition:.3s;
-}
-
-
-
-/* BANNER IMAGE SECTION */
-
-.banner-section{
-height:260px;
-
-background-image:url("https://i.pinimg.com/originals/46/47/93/4647934d3e5fa4dbef674e7dc86c51a0.jpg");
-
+.hero{
+height:80vh;
+background-image:url("/static/images/bg.jpg");
 background-size:cover;
 background-position:center;
-
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
 }
 
+/* DARK OVERLAY */
 
-.banner-overlay{
-background:rgba(75,42,58,0.75);
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.35);
+}
 
-padding:40px 90px;
+/* CENTER CARD */
 
-border-radius:12px;
-
+.hero-box{
+position:relative;
+background:#6f5a61;
+padding:60px 120px;
+border-radius:20px;
 text-align:center;
-
 color:white;
+box-shadow:0px 12px 35px rgba(0,0,0,0.4);
 
-animation:fadeIn 1.5s ease-in-out;
+animation:fadeUp 1.5s ease;
 }
 
+/* TITLE */
 
-.banner-overlay h1{
-font-size:46px;
-letter-spacing:7px;
-margin-bottom:12px;
+.hero-box h1{
+font-size:58px;
+letter-spacing:6px;
+margin-bottom:15px;
 }
 
+/* SUBTITLE */
 
-.banner-overlay p{
+.hero-box p{
 font-size:20px;
 letter-spacing:2px;
+opacity:0.9;
 }
 
+/* BUTTON */
 
+.hero-btn{
+display:inline-block;
+margin-top:30px;
+background:#d4af37;
+color:black;
+padding:14px 34px;
+font-size:18px;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
 
-/* FEATURES */
+.hero-btn:hover{
+background:#f5d76e;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0px);
+}
+}
+
+/* FEATURE SECTION */
 
 .features{
 display:flex;
 justify-content:center;
-gap:40px;
-margin-top:70px;
-padding-bottom:60px;
+gap:60px;
+padding:90px 80px;
 }
 
+/* FEATURE CARDS */
 
 .card{
 background:white;
-padding:30px;
+padding:45px;
+border-radius:16px;
 width:260px;
-border-radius:12px;
-box-shadow:0px 6px 18px rgba(0,0,0,0.15);
 text-align:center;
-transition:.3s;
+box-shadow:0px 8px 25px rgba(0,0,0,0.15);
+transition:0.3s;
 }
-
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0px 12px 28px rgba(0,0,0,0.25);
 }
-
 
 .card h2{
 color:#4b2a3a;
-margin-bottom:18px;
 letter-spacing:2px;
+margin-bottom:15px;
 }
 
-
-
-/* CULTURE SECTION */
-
-.culture-section{
-margin-top:70px;
-padding:60px;
-text-align:center;
-background:#f3ede7;
-}
-
-
-.culture-section h2{
-font-size:34px;
-letter-spacing:4px;
-color:#4b2a3a;
-}
-
-
-.culture-section p{
-margin-top:18px;
-font-size:18px;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
-line-height:1.7;
-}
-
-
-
-/* FADE ANIMATION */
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+.card p{
+font-size:15px;
+color:#333;
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 {% include "navbar.html" %}
 
+<div class="hero">
 
-
-<!-- HERO IMAGE -->
-
-<div class="banner-section">
-
-<div class="banner-overlay">
+<div class="hero-box">
 
 <h1>Vakaya Vani</h1>
 
@@ -256,69 +154,39 @@ transform:translateY(0);
 Where Sanskrit Meets Sound, Rhythm and Meaning
 </p>
 
-</div>
+<a href="/translate" class="hero-btn">
+Try Translation →
+</a>
 
 </div>
 
+</div>
 
-
-<!-- FEATURES -->
 
 <div class="features">
 
 <div class="card">
 <h2>Meter Detection</h2>
-
 <p>
-Automatically detects Sanskrit Chandas like
-Anushtubh and Trishtubh.
+Automatically detects Sanskrit Chandas like Anushtubh and Trishtubh.
 </p>
-
 </div>
-
 
 <div class="card">
 <h2>Smart Translation</h2>
-
 <p>
-Translate Sanskrit verses into meaningful
-English instantly.
+Translate Sanskrit verses into meaningful English instantly.
 </p>
-
 </div>
-
 
 <div class="card">
 <h2>Melodic Chanting</h2>
-
 <p>
-Hear verses recited with rhythm-aware
-pronunciation clarity.
+Hear verses recited with rhythm-aware pronunciation clarity.
 </p>
-
 </div>
 
 </div>
-
-
-
-<!-- CULTURAL SECTION -->
-
-<div class="culture-section">
-
-<h2>Sanskrit Chanting Tradition</h2>
-
-<p>
-
-Vakaya Vani preserves the ancient oral chanting
-tradition of Sanskrit by combining linguistic
-analysis, Chandas detection and melodic recitation
-technology into a single intelligent system.
-
-</p>
-
-</div>
-
 
 </body>
 </html>
