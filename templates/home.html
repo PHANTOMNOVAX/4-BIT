@@ -2,100 +2,10 @@
 <html>
 
 <head>
+
 <title>Vakaya Vani – Sanskrit Recitation Engine</title>
 
 <style>
-  /* NAVBAR */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#4b2a3a;
-padding:18px 70px;
-position:relative;
-height:85px;
-}
-
-
-/* LEFT LINKS */
-
-.nav-left a{
-margin-right:45px;
-color:white;
-text-decoration:none;
-font-size:18px;
-letter-spacing:1px;
-}
-
-
-/* RIGHT LINKS */
-
-.nav-right a{
-margin-left:45px;
-color:white;
-text-decoration:none;
-font-size:18px;
-letter-spacing:1px;
-}
-
-
-/* CENTER LOGO */
-
-.logo-container{
-position:absolute;
-left:50%;
-top:-28px;
-transform:translateX(-50%);
-text-align:center;
-}
-
-
-/* OM CIRCLE */
-
-.logo-circle{
-width:70px;
-height:70px;
-background:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:36px;
-color:#4b2a3a;
-font-weight:bold;
-
-box-shadow:0px 8px 25px rgba(0,0,0,0.35);
-
-animation:floatLogo 2s ease-in-out infinite alternate;
-}
-
-
-/* FLOAT EFFECT */
-
-@keyframes floatLogo{
-from{ transform:translateY(0px);}
-to{ transform:translateY(-7px);}
-}
-
-
-/* BRAND NAME */
-
-.logo-text{
-color:white;
-font-size:22px;
-letter-spacing:4px;
-margin-top:6px;
-font-weight:bold;
-}
-
-
-/* HOVER EFFECT */
-
-.navbar a:hover{
-color:#f0c674;
-transition:.3s;
-}
 
 /* PAGE BASE */
 
@@ -106,6 +16,7 @@ background:#f7f3ef;
 }
 
 
+
 /* NAVBAR */
 
 .navbar{
@@ -113,162 +24,151 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 background:#4b2a3a;
-padding:20px 60px;
+padding:25px 120px;
 position:relative;
-height:80px;
+height:95px;
 }
 
 
-/* LEFT MENU */
+/* LEFT LINKS */
 
 .nav-left a{
-margin-right:50px;
-font-size:18px;
-letter-spacing:1.5px;
+margin-right:70px;
 color:white;
 text-decoration:none;
+font-size:19px;
+letter-spacing:2px;
 }
 
 
-/* RIGHT MENU */
+/* RIGHT LINKS */
 
 .nav-right a{
-margin-left:50px;
-font-size:18px;
-letter-spacing:1.5px;
+margin-left:70px;
 color:white;
 text-decoration:none;
+font-size:19px;
+letter-spacing:2px;
 }
 
 
-/* CENTER LOGO POSITION FIX */
+/* CENTER LOGO */
 
-.logo-wrapper{
+.logo-container{
 position:absolute;
 left:50%;
-top:-25px;
+top:-35px;
 transform:translateX(-50%);
-z-index:999;
 text-align:center;
 }
 
 
-/* OM LOGO FLOATING */
+/* GOLD OM */
 
-.logo-pop{
-height:85px;
+.logo-circle{
+width:80px;
+height:80px;
 background:white;
 border-radius:50%;
-padding:8px;
-box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:42px;
+color:#c9a646;
+
+box-shadow:0px 10px 25px rgba(0,0,0,0.35);
+
 animation:floatLogo 2s ease-in-out infinite alternate;
 }
 
 
-/* FLOAT ANIMATION */
-
 @keyframes floatLogo{
-from{ transform:translateY(0px); }
-to{ transform:translateY(-6px); }
+from{transform:translateY(0px);}
+to{transform:translateY(-8px);}
 }
 
 
-/* BRAND TITLE */
+/* BRAND NAME */
 
-.brand-name{
+.logo-text{
 color:white;
-font-size:22px;
-letter-spacing:4px;
+font-size:24px;
+letter-spacing:6px;
+margin-top:8px;
 font-weight:bold;
-margin-top:6px;
 }
 
 
-/* NAVBAR HOVER */
+/* NAV HOVER */
 
 .navbar a:hover{
-color:#f0c674;
-transition:0.3s ease;
+color:#c9a646;
+transition:.3s;
 }
 
 
 
-/* HERO SECTION (REDUCED SIZE) */
+/* BANNER IMAGE SECTION */
 
-.hero{
-height:300px;
-margin-top:40px;
-background-image:url("https://images.unsplash.com/photo-1606293926075-91b1cabdd1c6");
+.banner-section{
+height:260px;
+
+background-image:url("https://i.pinimg.com/originals/46/47/93/4647934d3e5fa4dbef674e7dc86c51a0.jpg");
+
 background-size:cover;
 background-position:center;
+
 display:flex;
 align-items:center;
 justify-content:center;
 }
 
 
-.hero-overlay{
-background:rgba(75,42,58,0.65);
-padding:40px;
+.banner-overlay{
+background:rgba(75,42,58,0.75);
+
+padding:40px 90px;
+
 border-radius:12px;
+
 text-align:center;
+
 color:white;
+
 animation:fadeIn 1.5s ease-in-out;
 }
 
 
-.hero h1{
-font-size:42px;
-letter-spacing:3px;
-margin:0;
+.banner-overlay h1{
+font-size:46px;
+letter-spacing:7px;
+margin-bottom:12px;
 }
 
 
-.hero p{
-font-size:18px;
-margin-top:12px;
-margin-bottom:20px;
-}
-
-
-.hero-btn{
-background:#f0c674;
-padding:10px 24px;
-color:black;
-text-decoration:none;
-font-weight:bold;
-border-radius:6px;
-}
-
-
-.hero-btn:hover{
-background:white;
-transition:.3s;
-}
-
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+.banner-overlay p{
+font-size:20px;
+letter-spacing:2px;
 }
 
 
 
-/* FEATURES SECTION */
+/* FEATURES */
 
 .features{
 display:flex;
 justify-content:center;
-gap:30px;
-margin-top:60px;
-padding-bottom:40px;
+gap:40px;
+margin-top:70px;
+padding-bottom:60px;
 }
 
 
 .card{
 background:white;
-padding:25px;
-width:240px;
+padding:30px;
+width:260px;
 border-radius:12px;
 box-shadow:0px 6px 18px rgba(0,0,0,0.15);
 text-align:center;
@@ -277,51 +177,59 @@ transition:.3s;
 
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
 box-shadow:0px 12px 28px rgba(0,0,0,0.25);
 }
 
 
 .card h2{
 color:#4b2a3a;
-margin-bottom:12px;
+margin-bottom:18px;
+letter-spacing:2px;
 }
 
 
 
-/* DEMO SECTION */
+/* CULTURE SECTION */
 
-.demo-section{
+.culture-section{
+margin-top:70px;
+padding:60px;
 text-align:center;
-margin-top:50px;
-padding:40px;
-background:#f7f3ef;
+background:#f3ede7;
 }
 
 
-.verse{
-font-size:26px;
+.culture-section h2{
+font-size:34px;
+letter-spacing:4px;
 color:#4b2a3a;
-margin-top:15px;
 }
 
 
-.meaning{
-margin-top:10px;
-font-size:17px;
-color:#444;
+.culture-section p{
+margin-top:18px;
+font-size:18px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+line-height:1.7;
 }
 
 
 
-/* ABOUT PREVIEW */
+/* FADE ANIMATION */
 
-.about-preview{
-text-align:center;
-padding:50px;
-background:#4b2a3a;
-color:white;
-margin-top:50px;
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 </style>
@@ -336,21 +244,17 @@ margin-top:50px;
 
 
 
-<!-- HERO SECTION -->
+<!-- HERO IMAGE -->
 
-<div class="hero">
+<div class="banner-section">
 
-<div class="hero-overlay">
+<div class="banner-overlay">
 
 <h1>Vakaya Vani</h1>
 
 <p>
-AI-powered Sanskrit Verse Translation • Meter Detection • Melodic Chant Generation
+Where Sanskrit Meets Sound, Rhythm and Meaning
 </p>
-
-<a href="/translate" class="hero-btn">
-Try Translation →
-</a>
 
 </div>
 
@@ -364,69 +268,54 @@ Try Translation →
 
 <div class="card">
 <h2>Meter Detection</h2>
+
 <p>
-Automatically detects Sanskrit Chandas like Anushtubh and Trishtubh.
+Automatically detects Sanskrit Chandas like
+Anushtubh and Trishtubh.
 </p>
+
 </div>
+
 
 <div class="card">
 <h2>Smart Translation</h2>
+
 <p>
-Translate Sanskrit verses into meaningful English instantly.
+Translate Sanskrit verses into meaningful
+English instantly.
 </p>
+
 </div>
+
 
 <div class="card">
 <h2>Melodic Chanting</h2>
-<p>
-Hear verses recited with rhythm-aware pronunciation clarity.
-</p>
-</div>
-
-</div>
-
-
-
-<!-- DEMO VERSE -->
-
-<div class="demo-section">
-
-<h2>Example Sanskrit Verse</h2>
-
-<p class="verse">
-कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।
-</p>
-
-<p class="meaning">
-"You have the right to perform action, but not to the fruits of action."
-</p>
-
-<br>
-
-<a href="/chant" class="hero-btn">
-Listen Chant →
-</a>
-
-</div>
-
-
-
-<!-- ABOUT SECTION -->
-
-<div class="about-preview">
-
-<h2>About Vakaya Vani</h2>
 
 <p>
-Vakaya Vani is an AI-powered Sanskrit recitation engine combining linguistic meter detection,
-semantic translation and rhythmic chant synthesis to preserve India's oral knowledge traditions.
+Hear verses recited with rhythm-aware
+pronunciation clarity.
 </p>
 
-<br>
+</div>
 
-<a href="/about" class="hero-btn">
-Learn More →
-</a>
+</div>
+
+
+
+<!-- CULTURAL SECTION -->
+
+<div class="culture-section">
+
+<h2>Sanskrit Chanting Tradition</h2>
+
+<p>
+
+Vakaya Vani preserves the ancient oral chanting
+tradition of Sanskrit by combining linguistic
+analysis, Chandas detection and melodic recitation
+technology into a single intelligent system.
+
+</p>
 
 </div>
 
