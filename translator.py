@@ -1,15 +1,16 @@
-from googletrans import Translator
-
-translator = Translator()
+from deep_translator import GoogleTranslator
 
 
 def translate_text(text):
 
     try:
 
-        translation = translator.translate(text, src="sa", dest="en")
+        translation = GoogleTranslator(
+            source="auto",
+            target="en"
+        ).translate(text)
 
-        return translation.text
+        return translation
 
     except:
 
