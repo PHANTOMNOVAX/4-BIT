@@ -1,39 +1,16 @@
-from deep_translator import GoogleTranslator
-import re
+from googletrans import Translator
 
-
-def normalize(text):
-
-    text = text.replace("।", "")
-    text = text.replace("॥", "")
-    return text.strip()
-
-
-def split_words(text):
-
-    return re.findall(r'[\u0900-\u097F]+', text)
+translator = Translator()
 
 
 def translate_text(text):
 
-    text = normalize(text)
+    try:
 
-    words = split_words(text)
+        translation = translator.translate(text, src="sa", dest="en")
 
-    translated = []
+        return translation.text
 
-    translator = GoogleTranslator(source="auto", target="en")
+    except:
 
-    for word in words:
-
-        try:
-
-            result = translator.translate(word)
-
-            translated.append(result)
-
-        except:
-
-            translated.append(word)
-
-    return " ".join(translated)
+        return "Translation unavailable"
