@@ -37,20 +37,19 @@ animation:fadeUp 1.4s ease;
 /* TITLE */
 
 .hero-card h1{
-font-size:60px;
-letter-spacing:10px;
-color:white;
-margin-bottom:20px;
+font-size:52px;
+letter-spacing:4px;
+color:#fff;
+margin-bottom:10px;
 }
 
 
 /* SUBTITLE */
 
 .hero-card p{
-font-size:22px;
-color:#f4e2b6;
-letter-spacing:2px;
-margin-bottom:30px;
+font-size:20px;
+color:#f5d58c;
+margin-bottom:35px;
 }
 
 
@@ -58,96 +57,37 @@ margin-bottom:30px;
 
 .hero-btn{
 background:#d4af37;
-padding:16px 40px;
-font-size:20px;
-border-radius:12px;
+padding:14px 34px;
+border-radius:8px;
 text-decoration:none;
 color:black;
-transition:.3s ease;
+font-weight:bold;
+transition:.3s;
 }
 
 .hero-btn:hover{
-background:#f2d06b;
-transform:translateY(-3px);
-box-shadow:0px 6px 18px rgba(0,0,0,.3);
+background:#f2cf60;
 }
 
 
-/* FEATURES */
+/* FOOTER */
 
-.features{
-display:flex;
-justify-content:center;
-gap:50px;
-padding:80px 60px;
-background:#f4efe9;
-}
-
-.card{
-background:white;
-padding:40px;
-width:260px;
-border-radius:18px;
+.footer{
 text-align:center;
-box-shadow:0px 10px 30px rgba(0,0,0,.15);
-transition:.4s ease;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-
-/* EXAMPLE SECTION */
-
-.example{
-text-align:center;
-padding:80px 20px;
-background:#ece4df;
-}
-
-.example-verse{
-font-size:32px;
-letter-spacing:3px;
-margin-bottom:20px;
-}
-
-.example-meaning{
-font-size:20px;
-color:#444;
+padding:25px;
+color:#eee;
+font-size:16px;
+letter-spacing:2px;
+margin-top:80px;
 }
 
 
-/* FOOTER CREDIT */
-
-.project-credit{
-text-align:center;
-margin-top:60px;
-padding:25px 0;
-font-size:22px;
-letter-spacing:3px;
-color:#7a5a63;
-}
-
-.project-credit span{
-font-size:26px;
-font-weight:bold;
-color:#c9a646;
-
-text-shadow:
-0px 0px 6px rgba(201,166,70,0.6),
-0px 0px 18px rgba(201,166,70,0.4);
-
-animation:glowPulse 2s infinite alternate;
-}
-
-
-/* ANIMATIONS */
+/* ANIMATION */
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(80px);
+transform:translateY(40px);
 }
 to{
 opacity:1;
@@ -155,40 +95,16 @@ transform:translateY(0);
 }
 }
 
-@keyframes glowPulse{
-from{
-text-shadow:0px 0px 6px rgba(201,166,70,0.6);
-}
-to{
-text-shadow:
-0px 0px 18px rgba(201,166,70,0.9),
-0px 0px 28px rgba(201,166,70,0.5);
-}
-}
-
 </style>
 </head>
+
 
 <body>
 
 {% include "navbar.html" %}
 
 
-<!-- BACKGROUND MUSIC -->
-<audio id="bgMusic" loop>
-    <source src="{{ url_for('static', filename='audio/home_music.mp3') }}" type="audio/mpeg">
-</audio>
-
-<script>
-window.addEventListener("click", () => {
-    const music = document.getElementById("bgMusic");
-    music.volume = 0.12;
-    music.play().catch(()=>{});
-});
-</script>
-
-
-<!-- HERO -->
+<!-- HERO SECTION -->
 
 <div class="hero">
 
@@ -209,55 +125,33 @@ Try Translation →
 </div>
 
 
-<!-- FEATURES -->
+<!-- BACKGROUND MUSIC -->
 
-<div class="features">
+<audio id="bgMusic" loop>
+<source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
+</audio>
 
-<div class="card">
-<h2>Meter Detection</h2>
-<p>
-Automatically identifies Sanskrit poetic meters such as Anushtubh and Trishtubh.
-</p>
-</div>
+<script>
 
-<div class="card">
-<h2>Smart Translation</h2>
-<p>
-Instantly converts Sanskrit verses into meaningful English interpretation.
-</p>
-</div>
+window.addEventListener("click", () => {
 
-<div class="card">
-<h2>Melodic Chanting</h2>
-<p>
-Generates rhythm-aware chanting aligned with syllable structure.
-</p>
-</div>
+const music=document.getElementById("bgMusic");
 
-</div>
+music.volume=.12;
+
+music.play().catch(()=>{});
+
+});
+
+</script>
 
 
-<!-- EXAMPLE -->
+<!-- FOOTER -->
 
-<div class="example">
+<div class="footer">
 
-<h2>Example Verse</h2>
+✨ Project by <b>4-BIT</b>
 
-<div class="example-verse">
-कर्मण्येवाधिकारस्ते मा फलेषु कदाचन
-</div>
-
-<div class="example-meaning">
-You have the right to perform your duty, but not to its results.
-</div>
-
-</div>
-
-
-<!-- FOOTER CREDIT -->
-
-<div class="project-credit">
-✨ A Project by <span>4-Bit ✨</span>
 </div>
 
 
