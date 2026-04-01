@@ -7,22 +7,14 @@ from tts import generate_audio
 
 
 app = Flask(__name__)
-
-# Secret key for session storage
 app.secret_key = "vakya_vani_secret_key"
 
 
-# =========================
-# HOME PAGE
-# =========================
 @app.route("/")
 def home():
     return render_template("home.html")
 
 
-# =========================
-# TRANSLATION PAGE
-# =========================
 @app.route("/translate", methods=["GET", "POST"])
 def translate():
 
@@ -32,18 +24,14 @@ def translate():
 
         if verse:
 
-            # Store verse
             session["verse"] = verse
 
-            # Detect meter
             meter = detect_meter(verse)
             session["meter"] = meter
 
-            # Translate verse
             translation = translate_text(verse)
             session["translation"] = translation
 
-            # Generate chant audio
             audio_file = generate_audio(verse, meter)
             session["audio"] = audio_file
 
@@ -52,9 +40,6 @@ def translate():
     return render_template("translate.html")
 
 
-# =========================
-# CHANT PAGE
-# =========================
 @app.route("/chant")
 def chant():
 
@@ -63,7 +48,9 @@ def chant():
     translation = session.get("translation", "")
     audio = session.get("audio", "")
 
-    # Split verse lines
+    if audio:
+        audio = "audio/" + audio
+
     lines = verse.split("\n") if verse else []
 
     return render_template(
@@ -75,17 +62,11 @@ def chant():
     )
 
 
-# =========================
-# ABOUT PAGE
-# =========================
 @app.route("/about")
 def about():
     return render_template("about.html")
 
 
-# =========================
-# SERVER START (Render compatible)
-# =========================
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
