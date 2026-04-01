@@ -2,9 +2,12 @@
 <html>
 
 <head>
+
 <title>Vakya Vani</title>
 
 <style>
+
+/* PAGE BACKGROUND */
 
 body{
 margin:0;
@@ -34,18 +37,19 @@ padding:70px 100px;
 border-radius:22px;
 text-align:center;
 animation:fadeUp 1.4s ease;
+box-shadow:0px 12px 40px rgba(0,0,0,0.4);
 }
 
 
 .hero-card h1{
-font-size:52px;
+font-size:54px;
 letter-spacing:4px;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 
 .hero-card p{
-font-size:20px;
+font-size:21px;
 color:#f5d58c;
 margin-bottom:35px;
 }
@@ -60,15 +64,16 @@ border-radius:8px;
 text-decoration:none;
 color:black;
 font-weight:bold;
-transition:.3s;
+transition:.3s ease;
 }
 
 .hero-btn:hover{
 background:#f2cf60;
+transform:scale(1.05);
 }
 
 
-/* FEATURES */
+/* FEATURES SECTION */
 
 .features{
 display:flex;
@@ -79,9 +84,33 @@ background:#f7f3ef;
 color:black;
 }
 
+
 .feature-box{
 width:260px;
-text-align:center;
+padding:25px;
+border-radius:14px;
+background:white;
+box-shadow:0px 6px 25px rgba(0,0,0,0.15);
+transition:.3s ease;
+}
+
+
+/* INTERACTIVE HOVER EFFECT */
+
+.feature-box:hover{
+transform:translateY(-12px) scale(1.04);
+box-shadow:0px 18px 40px rgba(0,0,0,0.25);
+}
+
+
+.feature-box h3{
+letter-spacing:2px;
+color:#4b2a3a;
+}
+
+
+.feature-box p{
+color:#555;
 }
 
 
@@ -89,24 +118,27 @@ text-align:center;
 
 .example{
 background:#ece7e4;
-padding:70px;
+padding:80px 20px;
 text-align:center;
 color:black;
 }
+
 
 .example h2{
 letter-spacing:3px;
 color:#4b2a3a;
 }
 
+
 .example-verse{
-font-size:32px;
-margin-top:20px;
+font-size:34px;
+margin-top:25px;
 font-family:"Noto Serif Devanagari", serif;
 }
 
+
 .example-meaning{
-margin-top:10px;
+margin-top:12px;
 font-size:18px;
 color:#555;
 }
@@ -116,27 +148,31 @@ color:#555;
 
 .footer{
 text-align:center;
-padding:25px;
-font-size:16px;
+padding:30px;
+font-size:17px;
 letter-spacing:2px;
-margin-top:40px;
+background:#4b2a3a;
 }
 
 
-/* ANIMATION */
+/* ENTRY ANIMATION */
 
 @keyframes fadeUp{
+
 from{
 opacity:0;
 transform:translateY(40px);
 }
+
 to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 </style>
+
 </head>
 
 
@@ -145,7 +181,7 @@ transform:translateY(0);
 {% include "navbar.html" %}
 
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 
 <div class="hero">
 
@@ -154,7 +190,7 @@ transform:translateY(0);
 <h1>Vakya Vani</h1>
 
 <p>
-AI-powered Sanskrit Translation, Meter Detection & Chant Visualization
+AI-Powered Sanskrit Translation, Meter Detection & Chant Visualization
 </p>
 
 <a href="/translate" class="hero-btn">
@@ -166,40 +202,61 @@ Try Translation →
 </div>
 
 
-<!-- FEATURES -->
+<!-- FEATURES SECTION -->
 
 <div class="features">
 
 <div class="feature-box">
+
 <h3>Meter Detection</h3>
-<p>Automatically identifies Sanskrit poetic meters.</p>
+
+<p>
+Automatically identifies Sanskrit poetic meters using syllable structure analysis.
+</p>
+
 </div>
 
+
 <div class="feature-box">
+
 <h3>Smart Translation</h3>
-<p>Converts Sanskrit verses into English meaning instantly.</p>
+
+<p>
+Transforms Sanskrit verses into meaningful English interpretations instantly.
+</p>
+
 </div>
+
 
 <div class="feature-box">
-<h3>Melodic Chanting</h3>
-<p>Generates rhythmic chant audio with synchronization.</p>
-</div>
+
+<h3>Chant Visualization</h3>
+
+<p>
+Synchronizes verse playback with dynamic text highlighting for immersive learning.
+</p>
 
 </div>
 
+</div>
 
-<!-- EXAMPLE -->
+
+<!-- EXAMPLE SECTION -->
 
 <div class="example">
 
 <h2>Example Verse</h2>
 
 <div class="example-verse">
+
 कर्मण्येवाधिकारस्ते मा फलेषु कदाचन
+
 </div>
 
 <div class="example-meaning">
-You have the right to perform your duty, but not to its results.
+
+You have the right to perform your duty, but never to its results.
+
 </div>
 
 </div>
@@ -208,16 +265,21 @@ You have the right to perform your duty, but not to its results.
 <!-- BACKGROUND MUSIC -->
 
 <audio id="bgMusic" loop>
+
 <source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
+
 </audio>
+
 
 <script>
 
+/* subtle autoplay after interaction */
+
 window.addEventListener("click", () => {
 
-const music=document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
 
-music.volume=0.025;
+music.volume = 0.03;
 
 music.play().catch(()=>{});
 
@@ -230,7 +292,7 @@ music.play().catch(()=>{});
 
 <div class="footer">
 
-✨ A Project by <b>4-Bit</b>
+✨ A Project by <b>4-BIT</b>✨
 
 </div>
 
