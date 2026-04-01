@@ -1,159 +1,159 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-<title>Vakya Vani</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Georgia, serif;
-background:url("/static/images/bg.jpeg") center/cover fixed no-repeat;
-}
-
-
-/* HERO SECTION */
-
-.hero{
-height:85vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-
-/* HERO CARD */
-
-.hero-card{
-background:rgba(90,60,70,.88);
-padding:70px 100px;
-border-radius:22px;
-text-align:center;
-animation:fadeUp 1.4s ease;
-}
-
-
-/* TITLE */
-
-.hero-card h1{
-font-size:52px;
-letter-spacing:4px;
-color:#fff;
-margin-bottom:10px;
-}
-
-
-/* SUBTITLE */
-
-.hero-card p{
-font-size:20px;
-color:#f5d58c;
-margin-bottom:35px;
-}
-
-
-/* BUTTON */
-
-.hero-btn{
-background:#d4af37;
-padding:14px 34px;
-border-radius:8px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-transition:.3s;
-}
-
-.hero-btn:hover{
-background:#f2cf60;
-}
-
-
-/* FOOTER */
-
-.footer{
-text-align:center;
-padding:25px;
-color:#eee;
-font-size:16px;
-letter-spacing:2px;
-margin-top:80px;
-}
-
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
-</head>
-
-
-<body>
-
-{% include "navbar.html" %}
-
-
-<!-- HERO SECTION -->
-
-<div class="hero">
-
-<div class="hero-card">
-
-<h1>Vakya Vani</h1>
-
-<p>
-Where Sanskrit Meets Sound, Rhythm and Meaning
-</p>
-
-<a href="/translate" class="hero-btn">
-Try Translation →
-</a>
-
-</div>
-
-</div>
-
-
-<!-- BACKGROUND MUSIC -->
-
-<audio id="bgMusic" loop>
-<source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
-</audio>
-
-<script>
-
-window.addEventListener("click", () => {
-
-const music=document.getElementById("bgMusic");
-
-music.volume=.12;
-
-music.play().catch(()=>{});
-
-});
-
-</script>
-
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-✨ Project by <b>4-BIT</b>
-
-</div>
-
-
-</body>
-</html>
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+  <title>Vakya Vani</title>
+  
+  <style>
+  
+  body{
+  margin:0;
+  font-family:Georgia, serif;
+  background:url("/static/images/bg.jpeg") center/cover fixed no-repeat;
+  }
+  
+  
+  /* HERO SECTION */
+  
+  .hero{
+  height:85vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  }
+  
+  
+  /* HERO CARD */
+  
+  .hero-card{
+  background:rgba(90,60,70,.88);
+  padding:70px 100px;
+  border-radius:22px;
+  text-align:center;
+  animation:fadeUp 1.4s ease;
+  }
+  
+  
+  /* TITLE */
+  
+  .hero-card h1{
+  font-size:52px;
+  letter-spacing:4px;
+  color:#fff;
+  margin-bottom:10px;
+  }
+  
+  
+  /* SUBTITLE */
+  
+  .hero-card p{
+  font-size:20px;
+  color:#f5d58c;
+  margin-bottom:35px;
+  }
+  
+  
+  /* BUTTON */
+  
+  .hero-btn{
+  background:#d4af37;
+  padding:14px 34px;
+  border-radius:8px;
+  text-decoration:none;
+  color:black;
+  font-weight:bold;
+  transition:.3s;
+  }
+  
+  .hero-btn:hover{
+  background:#f2cf60;
+  }
+  
+  
+  /* FOOTER */
+  
+  .footer{
+  text-align:center;
+  padding:25px;
+  color:#eee;
+  font-size:16px;
+  letter-spacing:2px;
+  margin-top:80px;
+  }
+  
+  
+  /* ANIMATION */
+  
+  @keyframes fadeUp{
+  from{
+  opacity:0;
+  transform:translateY(40px);
+  }
+  to{
+  opacity:1;
+  transform:translateY(0);
+  }
+  }
+  
+  </style>
+  </head>
+  
+  
+  <body>
+  
+  {% include "navbar.html" %}
+  
+  
+  <!-- HERO SECTION -->
+  
+  <div class="hero">
+  
+  <div class="hero-card">
+  
+  <h1>Vakya Vani</h1>
+  
+  <p>
+  Where Sanskrit Meets Sound, Rhythm and Meaning
+  </p>
+  
+  <a href="/translate" class="hero-btn">
+  Try Translation →
+  </a>
+  
+  </div>
+  
+  </div>
+  
+  
+  <!-- BACKGROUND MUSIC -->
+  
+  <audio id="bgMusic" loop>
+  <source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
+  </audio>
+  
+  <script>
+  
+  window.addEventListener("click", () => {
+  
+  const music=document.getElementById("bgMusic");
+  
+  music.volume=.035;
+  
+  music.play().catch(()=>{});
+  
+  });
+  
+  </script>
+  
+  
+  <!-- FOOTER -->
+  
+  <div class="footer">
+  
+  ✨ Project by <b>4-BIT</b>
+  
+  </div>
+  
+  
+  </body>
+  </html>
