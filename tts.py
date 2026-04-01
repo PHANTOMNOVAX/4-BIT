@@ -1,30 +1,51 @@
 from gtts import gTTS
 import os
-import uuid
 import re
 
-AUDIO_FOLDER = "static/audio"
+OUTPUT_FILE = "audio/output.mp3"
 
 
 def preprocess_text(text):
+
     text = text.replace("॥", ". ")
     text = text.replace("।", ". ")
+
     text = re.sub(r"\s+", " ", text)
+
     return text.strip()
+
+
+def split_lines(text):
+
+    parts = text.split(". ")
+
+    return [p.strip() for p in parts if p.strip()]
 
 
 def generate_audio(text, meter=""):
 
     cleaned = preprocess_text(text)
 
-    filename = f"chant_{uuid.uuid4().hex}.mp3"
+    lines = split_lines(cleaned)
 
-    filepath = os.path.join(AUDIO_FOLDER, filename)
+    chant_text = ""
 
-    os.makedirs(AUDIO_FOLDER, exist_ok=True)
+    for line in lines:
+        chant_text += line + "... "
 
-    tts = gTTS(text=cleaned, lang="hi", slow=False)
+    tts = gTTS(
+        text=chant_text,
+        lang="hi",
+        slow=False
+    )
 
-    tts.save(filepath)
+    audio_path = os.path.join("static", "audio")
 
-    return filename
+    if not os.path.exists(audio_path):
+        os.makedirs(audio_path)
+
+    full_file = os.path.join(audio_path, "output.mp3")
+
+    tts.save(full_file)
+
+    return "audio/output.mp3"
