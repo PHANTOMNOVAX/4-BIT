@@ -1,22 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import os
-
 from meter import detect_meter
 from translator import translate_text
 from tts import generate_audio
 
 
 app = Flask(__name__)
+
 app.secret_key = "vakya_vani_secret_key"
 
 
 # HOME PAGE
+
 @app.route("/")
 def home():
     return render_template("home.html")
 
 
 # TRANSLATE PAGE
+
 @app.route("/translate", methods=["GET", "POST"])
 def translate():
 
@@ -34,8 +35,8 @@ def translate():
             translation = translate_text(verse)
             session["translation"] = translation
 
-            audio_file = generate_audio(verse, meter)
-            session["audio"] = audio_file
+            audio_path = generate_audio(verse, meter)
+            session["audio"] = audio_path
 
             return redirect(url_for("chant"))
 
@@ -43,6 +44,7 @@ def translate():
 
 
 # CHANT PAGE
+
 @app.route("/chant")
 def chant():
 
@@ -51,8 +53,8 @@ def chant():
     translation = session.get("translation", "")
     audio = session.get("audio", "")
 
-    if audio:
-        audio = "audio/" + audio
+    if verse == "":
+        return redirect(url_for("translate"))
 
     return render_template(
         "chant.html",
@@ -64,12 +66,11 @@ def chant():
 
 
 # ABOUT PAGE
+
 @app.route("/about")
 def about():
     return render_template("about.html")
 
 
-# RENDER DEPLOYMENT PORT HANDLING
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=10000)
