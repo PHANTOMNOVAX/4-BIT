@@ -2,312 +2,25 @@
 <html>
 
 <head>
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-
-<title>Chant Visualization | Vakaya Vani</title>
+<title>Chant Visualization | Vakya Vani</title>
 
 <style>
 
-
-
-/* PAGE BACKGROUND */
-
 body{
-
 margin:0;
-
 font-family:"Inter", sans-serif;
-
 background:
-
 linear-gradient(rgba(255,255,255,0.9),
 rgba(255,255,255,0.9)),
-
 url("https://www.transparenttextures.com/patterns/cream-paper.png");
-
 color:#2e2e2e;
-
 }
 
 
-
-/* MAIN HEADINGS */
-
-h1{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:5px;
-
-font-size:52px;
-
-color:#4b2a3a;
-
-animation:fadeDown 1.2s ease;
-
-}
-
-
-
-/* SECTION HEADINGS */
-
-h2{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:3px;
-
-color:#4b2a3a;
-
-}
-
-
-
-/* NAVBAR LINKS */
-
-.nav-left a,
-.nav-right a{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:3px;
-
-font-size:19px;
-
-color:white;
-
-text-decoration:none;
-
-transition:0.3s ease;
-
-}
-
-
-.navbar a:hover{
-
-color:#d4af37;
-
-}
-
-
-
-/* SANSKRIT VERSE TEXT */
-
-.verse{
-
-font-family:"Noto Serif Devanagari", serif;
-
-font-size:40px;
-
-letter-spacing:2px;
-
-line-height:1.8;
-
-color:#3a2a2a;
-
-animation:verseFade 1.2s ease;
-
-}
-
-
-
-/* TRANSLATION TEXT */
-
-.translation{
-
-font-size:18px;
-
-color:#666;
-
-margin-top:10px;
-
-}
-
-
-
-/* BUTTON STYLE */
-
-button,
-.hero-btn{
-
-background:#d4af37;
-
-color:black;
-
-border:none;
-
-padding:14px 32px;
-
-font-size:18px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-transition:0.3s ease;
-
-}
-
-
-button:hover,
-.hero-btn:hover{
-
-background:#f2d06b;
-
-transform:translateY(-2px);
-
-}
-
-
-
-/* CARD STYLE */
-
-.card{
-
-background:white;
-
-padding:40px;
-
-border-radius:18px;
-
-box-shadow:
-
-0px 10px 30px rgba(0,0,0,0.12);
-
-transition:0.3s ease;
-
-}
-
-
-.card:hover{
-
-transform:translateY(-8px);
-
-}
-
-
-
-/* INFO BOX STYLE */
-
-.info-box{
-
-font-family:"Playfair Display", serif;
-
-letter-spacing:2px;
-
-padding:18px 35px;
-
-border-radius:12px;
-
-background:white;
-
-display:inline-block;
-
-margin:10px;
-
-box-shadow:0px 6px 20px rgba(0,0,0,0.12);
-
-}
-
-
-
-/* WORD HIGHLIGHT DURING CHANT */
-
-.highlight{
-
-color:#d4af37;
-
-text-shadow:
-
-0px 0px 10px rgba(212,175,55,0.7),
-
-0px 0px 25px rgba(212,175,55,0.45);
-
-transform:scale(1.25);
-
-transition:0.35s ease;
-
-}
-
-
-
-/* PAGE ENTRY ANIMATION */
-
-@keyframes fadeDown{
-
-from{
-
-opacity:0;
-
-transform:translateY(-30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-/* VERSE ENTRY ANIMATION */
-
-@keyframes verseFade{
-
-from{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-h1{
-
-font-size:36px;
-
-}
-
-.verse{
-
-font-size:28px;
-
-}
-
-}
-
-
-
-body{
-margin:0;
-background:#ece7e4;
-font-family:Georgia, serif;
-}
-
-
-/* PAGE CONTAINER */
+/* CONTAINER */
 
 .container{
 max-width:1000px;
@@ -320,7 +33,9 @@ text-align:center;
 /* TITLE */
 
 h2{
-letter-spacing:3px;
+font-family:"Playfair Display", serif;
+letter-spacing:4px;
+font-size:44px;
 color:#4b2a3a;
 }
 
@@ -330,11 +45,10 @@ color:#4b2a3a;
 .meter{
 margin-top:20px;
 font-size:22px;
-color:#333;
 }
 
 
-/* TRANSLATION DISPLAY */
+/* TRANSLATION */
 
 .translation{
 margin-top:15px;
@@ -343,30 +57,33 @@ color:#555;
 }
 
 
-/* VERSE DISPLAY */
+/* VERSE */
 
 #chant-container{
 margin-top:40px;
 line-height:65px;
+font-family:"Noto Serif Devanagari", serif;
 }
 
 
-/* EACH WORD */
+/* WORD STYLE */
 
 .word{
-font-size:34px;
-margin-right:12px;
-transition:0.3s ease;
+font-size:36px;
+margin-right:14px;
+transition:.35s ease;
 display:inline-block;
 }
 
 
-/* ACTIVE WORD */
+/* HIGHLIGHT ACTIVE WORD */
 
 .highlight{
 color:#d4af37;
-text-shadow:0px 0px 12px rgba(212,175,55,0.9);
-transform:scale(1.18);
+text-shadow:
+0px 0px 12px rgba(212,175,55,0.9),
+0px 0px 25px rgba(212,175,55,0.4);
+transform:scale(1.2);
 }
 
 
@@ -387,11 +104,8 @@ margin-top:40px;
 
 <div class="container">
 
-
 <h2>Live Chant Visualization</h2>
 
-
-<!-- METER -->
 
 {% if meter %}
 <div class="meter">
@@ -399,8 +113,6 @@ Detected Meter: <b>{{ meter }}</b>
 </div>
 {% endif %}
 
-
-<!-- TRANSLATION -->
 
 {% if translation %}
 <div class="translation">
@@ -414,9 +126,7 @@ Detected Meter: <b>{{ meter }}</b>
 <div id="chant-container">
 
 {% for word in verse.split() %}
-
 <span class="word">{{ word }}</span>
-
 {% endfor %}
 
 </div>
@@ -425,8 +135,8 @@ Detected Meter: <b>{{ meter }}</b>
 <!-- AUDIO PLAYER -->
 
 {% if audio %}
-<audio controls autoplay>
-    <source src="{{ url_for('static', filename=audio) }}" type="audio/mpeg">
+<audio id="chant-audio" controls autoplay>
+<source src="{{ url_for('static', filename=audio) }}" type="audio/mpeg">
 </audio>
 {% endif %}
 
@@ -436,31 +146,21 @@ Detected Meter: <b>{{ meter }}</b>
 
 <script>
 
-/* AUDIO + WORD ELEMENTS */
-
 const audio = document.getElementById("chant-audio");
 const words = document.querySelectorAll(".word");
 
-
 if(audio){
 
-audio.addEventListener("play", ()=>{
+audio.addEventListener("loadedmetadata", ()=>{
 
 const totalDuration = audio.duration * 1000;
-
 const timePerWord = totalDuration / words.length;
-
-
-/* RESET HIGHLIGHTS */
 
 words.forEach(word=>{
 word.classList.remove("highlight");
 });
 
-
-/* START LOOP */
-
-words.forEach((word, index)=>{
+words.forEach((word,index)=>{
 
 setTimeout(()=>{
 
@@ -476,9 +176,6 @@ words[index-1].classList.remove("highlight");
 
 });
 
-
-/* RESET AFTER AUDIO ENDS */
-
 audio.addEventListener("ended", ()=>{
 
 words.forEach(word=>{
@@ -493,5 +190,4 @@ word.classList.remove("highlight");
 
 
 </body>
-
 </html>
