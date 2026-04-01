@@ -1,4 +1,5 @@
-flask
+Flask
 gtts
 numpy
 googletrans==4.0.0-rc1
+regex
