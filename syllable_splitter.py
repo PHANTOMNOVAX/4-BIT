@@ -1,28 +1,45 @@
 import re
 
 
-VOWELS = "अआइईउऊऋॠऌएऐओऔ"
+LONG_VOWELS = ["आ","ई","ऊ","ए","ऐ","ओ","औ","ॠ"]
+
+SHORT_VOWELS = ["अ","इ","उ","ऋ","ऌ"]
+
+
+def is_long(syllable):
+
+    for v in LONG_VOWELS:
+
+        if v in syllable:
+            return True
+
+    if syllable.endswith("ं") or syllable.endswith("ः"):
+        return True
+
+    return False
 
 
 def split_syllables(text):
 
-    text = re.sub(r"[^\u0900-\u097F]", "", text)
+    pattern = r'[\u0900-\u097F][\u093E-\u094C\u0902\u0903]?'
 
-    syllables = []
+    return re.findall(pattern, text)
 
-    current = ""
 
-    for char in text:
+def guru_laghu_pattern(text):
 
-        current += char
+    syllables = split_syllables(text)
 
-        if char in VOWELS:
+    pattern = []
 
-            syllables.append(current)
+    for s in syllables:
 
-            current = ""
+        if is_long(s):
 
-    if current:
-        syllables.append(current)
+            pattern.append("G")
 
-    return syllables
+        else:
+
+            pattern.append("L")
+
+    return syllables, pattern
