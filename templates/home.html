@@ -1,159 +1,239 @@
-  <!DOCTYPE html>
-  <html>
-  
-  <head>
-  <title>Vakya Vani</title>
-  
-  <style>
-  
-  body{
-  margin:0;
-  font-family:Georgia, serif;
-  background:url("/static/images/bg.jpeg") center/cover fixed no-repeat;
-  }
-  
-  
-  /* HERO SECTION */
-  
-  .hero{
-  height:85vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  }
-  
-  
-  /* HERO CARD */
-  
-  .hero-card{
-  background:rgba(90,60,70,.88);
-  padding:70px 100px;
-  border-radius:22px;
-  text-align:center;
-  animation:fadeUp 1.4s ease;
-  }
-  
-  
-  /* TITLE */
-  
-  .hero-card h1{
-  font-size:52px;
-  letter-spacing:4px;
-  color:#fff;
-  margin-bottom:10px;
-  }
-  
-  
-  /* SUBTITLE */
-  
-  .hero-card p{
-  font-size:20px;
-  color:#f5d58c;
-  margin-bottom:35px;
-  }
-  
-  
-  /* BUTTON */
-  
-  .hero-btn{
-  background:#d4af37;
-  padding:14px 34px;
-  border-radius:8px;
-  text-decoration:none;
-  color:black;
-  font-weight:bold;
-  transition:.3s;
-  }
-  
-  .hero-btn:hover{
-  background:#f2cf60;
-  }
-  
-  
-  /* FOOTER */
-  
-  .footer{
-  text-align:center;
-  padding:25px;
-  color:#eee;
-  font-size:16px;
-  letter-spacing:2px;
-  margin-top:80px;
-  }
-  
-  
-  /* ANIMATION */
-  
-  @keyframes fadeUp{
-  from{
-  opacity:0;
-  transform:translateY(40px);
-  }
-  to{
-  opacity:1;
-  transform:translateY(0);
-  }
-  }
-  
-  </style>
-  </head>
-  
-  
-  <body>
-  
-  {% include "navbar.html" %}
-  
-  
-  <!-- HERO SECTION -->
-  
-  <div class="hero">
-  
-  <div class="hero-card">
-  
-  <h1>Vakya Vani</h1>
-  
-  <p>
-  Where Sanskrit Meets Sound, Rhythm and Meaning
-  </p>
-  
-  <a href="/translate" class="hero-btn">
-  Try Translation →
-  </a>
-  
-  </div>
-  
-  </div>
-  
-  
-  <!-- BACKGROUND MUSIC -->
-  
-  <audio id="bgMusic" loop>
-  <source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
-  </audio>
-  
-  <script>
-  
-  window.addEventListener("click", () => {
-  
-  const music=document.getElementById("bgMusic");
-  
-  music.volume=.035;
-  
-  music.play().catch(()=>{});
-  
-  });
-  
-  </script>
-  
-  
-  <!-- FOOTER -->
-  
-  <div class="footer">
-  
-  ✨ Project by <b>4-BIT</b>
-  
-  </div>
-  
-  
-  </body>
-  </html>
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Vakya Vani</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Georgia, serif;
+background:
+linear-gradient(rgba(40,20,30,0.65), rgba(40,20,30,0.65)),
+url("/static/images/bg.jpeg") center/cover fixed no-repeat;
+color:white;
+}
+
+
+/* HERO SECTION */
+
+.hero{
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+
+/* HERO CARD */
+
+.hero-card{
+background:rgba(90,60,70,.88);
+padding:70px 100px;
+border-radius:22px;
+text-align:center;
+animation:fadeUp 1.4s ease;
+}
+
+
+.hero-card h1{
+font-size:52px;
+letter-spacing:4px;
+margin-bottom:10px;
+}
+
+
+.hero-card p{
+font-size:20px;
+color:#f5d58c;
+margin-bottom:35px;
+}
+
+
+/* BUTTON */
+
+.hero-btn{
+background:#d4af37;
+padding:14px 34px;
+border-radius:8px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+transition:.3s;
+}
+
+.hero-btn:hover{
+background:#f2cf60;
+}
+
+
+/* FEATURES */
+
+.features{
+display:flex;
+justify-content:center;
+gap:40px;
+padding:80px 20px;
+background:#f7f3ef;
+color:black;
+}
+
+.feature-box{
+width:260px;
+text-align:center;
+}
+
+
+/* EXAMPLE SECTION */
+
+.example{
+background:#ece7e4;
+padding:70px;
+text-align:center;
+color:black;
+}
+
+.example h2{
+letter-spacing:3px;
+color:#4b2a3a;
+}
+
+.example-verse{
+font-size:32px;
+margin-top:20px;
+font-family:"Noto Serif Devanagari", serif;
+}
+
+.example-meaning{
+margin-top:10px;
+font-size:18px;
+color:#555;
+}
+
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+padding:25px;
+font-size:16px;
+letter-spacing:2px;
+margin-top:40px;
+}
+
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+
+<body>
+
+{% include "navbar.html" %}
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-card">
+
+<h1>Vakya Vani</h1>
+
+<p>
+AI-powered Sanskrit Translation, Meter Detection & Chant Visualization
+</p>
+
+<a href="/translate" class="hero-btn">
+Try Translation →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature-box">
+<h3>Meter Detection</h3>
+<p>Automatically identifies Sanskrit poetic meters.</p>
+</div>
+
+<div class="feature-box">
+<h3>Smart Translation</h3>
+<p>Converts Sanskrit verses into English meaning instantly.</p>
+</div>
+
+<div class="feature-box">
+<h3>Melodic Chanting</h3>
+<p>Generates rhythmic chant audio with synchronization.</p>
+</div>
+
+</div>
+
+
+<!-- EXAMPLE -->
+
+<div class="example">
+
+<h2>Example Verse</h2>
+
+<div class="example-verse">
+कर्मण्येवाधिकारस्ते मा फलेषु कदाचन
+</div>
+
+<div class="example-meaning">
+You have the right to perform your duty, but not to its results.
+</div>
+
+</div>
+
+
+<!-- BACKGROUND MUSIC -->
+
+<audio id="bgMusic" loop>
+<source src="{{ url_for('static', filename='audio/home_music.mp3') }}">
+</audio>
+
+<script>
+
+window.addEventListener("click", () => {
+
+const music=document.getElementById("bgMusic");
+
+music.volume=0.035;
+
+music.play().catch(()=>{});
+
+});
+
+</script>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+✨ A Project by <b>4-Bit</b>
+
+</div>
+
+
+</body>
+</html>
