@@ -175,15 +175,15 @@ text-shadow:
 
 
 <!-- BACKGROUND MUSIC -->
-
-<audio id="bgMusic" autoplay loop>
-<source src="{{ url_for('static', filename='audio/home_music.mp3') }}" type="audio/mpeg">
+<audio id="bgMusic" loop>
+    <source src="{{ url_for('static', filename='audio/home_music.mp3') }}" type="audio/mpeg">
 </audio>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-const music=document.getElementById("bgMusic");
-music.volume=0.15;
+window.addEventListener("click", () => {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.12;
+    music.play().catch(()=>{});
 });
 </script>
 
