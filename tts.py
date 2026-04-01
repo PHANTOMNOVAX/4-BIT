@@ -4,37 +4,28 @@ import uuid
 import re
 
 
-AUDIO_FOLDER = "static/audio"
+AUDIO_FOLDER="static/audio"
 
 
 def preprocess_text(text):
-    text = text.replace("॥", ". ")
-    text = text.replace("।", ". ")
-    text = re.sub(r"\s+", " ", text)
+
+    text=text.replace("॥",". ")
+    text=text.replace("।",". ")
+
+    text=re.sub(r"\s+"," ",text)
+
     return text.strip()
 
 
-def split_lines(text):
-    return [p.strip() for p in text.split(". ") if p.strip()]
+def generate_audio(text,meter=""):
 
+    filename=f"chant_{uuid.uuid4().hex}.mp3"
 
-def generate_audio(text, meter=""):
+    filepath=os.path.join(AUDIO_FOLDER,filename)
 
-    cleaned = preprocess_text(text)
-    lines = split_lines(cleaned)
+    os.makedirs(AUDIO_FOLDER,exist_ok=True)
 
-    chant_text = " ... ".join(lines)
-
-    filename = f"chant_{uuid.uuid4().hex}.mp3"
-    filepath = os.path.join(AUDIO_FOLDER, filename)
-
-    os.makedirs(AUDIO_FOLDER, exist_ok=True)
-
-    tts = gTTS(
-        text=chant_text,
-        lang="hi",
-        slow=False
-    )
+    tts=gTTS(text=text,lang="hi",slow=False)
 
     tts.save(filepath)
 
