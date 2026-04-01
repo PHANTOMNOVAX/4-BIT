@@ -425,10 +425,8 @@ Detected Meter: <b>{{ meter }}</b>
 <!-- AUDIO PLAYER -->
 
 {% if audio %}
-<audio id="chant-audio" controls>
-
-<source src="{{ audio }}" type="audio/mpeg">
-
+<audio controls autoplay>
+    <source src="{{ url_for('static', filename=audio) }}" type="audio/mpeg">
 </audio>
 {% endif %}
 
