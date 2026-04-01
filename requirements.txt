@@ -1,5 +1,6 @@
-Flask
-gtts
-numpy
-googletrans==4.0.0-rc1
-regex
+Flask==3.0.3
+gtts==2.5.1
+numpy==1.26.4
+regex==2023.12.25
+deep-translator==1.11.4
+gunicorn==21.2.0
