@@ -1,19 +1,14 @@
-from googletrans import Translator
-
-translator = Translator()
+from deep_translator import GoogleTranslator
 
 
 def translate_text(text):
-
     try:
-        result = translator.translate(
-            text,
-            src="auto",
-            dest="en"
-        )
+        translation = GoogleTranslator(
+            source="auto",
+            target="en"
+        ).translate(text)
 
-        return result.text
+        return translation
 
     except Exception:
-
-        return "Translation unavailable"
+        return "Translation unavailable right now."
