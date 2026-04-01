@@ -3,7 +3,7 @@
 
 <head>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <title>Chant Visualization | Vakya Vani</title>
 
@@ -11,36 +11,26 @@
 
 body{
 margin:0;
-font-family:"Inter", sans-serif;
-background:
-linear-gradient(rgba(255,255,255,0.9),
-rgba(255,255,255,0.9)),
-url("https://www.transparenttextures.com/patterns/cream-paper.png");
-color:#2e2e2e;
-}
-
-
-/* CONTAINER */
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:60px;
+font-family:"Noto Serif Devanagari", serif;
+background:#f7f3ef;
 text-align:center;
 }
 
 
-/* TITLE */
-
-h2{
-font-family:"Playfair Display", serif;
-letter-spacing:4px;
-font-size:44px;
-color:#4b2a3a;
+.container{
+max-width:900px;
+margin:auto;
+padding:60px;
 }
 
 
-/* METER DISPLAY */
+h2{
+font-family:"Playfair Display", serif;
+font-size:44px;
+letter-spacing:4px;
+color:#4b2a3a;
+}
+
 
 .meter{
 margin-top:20px;
@@ -48,49 +38,64 @@ font-size:22px;
 }
 
 
-/* TRANSLATION */
-
 .translation{
 margin-top:15px;
 font-size:18px;
-color:#555;
+color:#666;
 }
 
-
-/* VERSE */
 
 #chant-container{
-margin-top:40px;
-line-height:65px;
-font-family:"Noto Serif Devanagari", serif;
+
+margin-top:50px;
+
+font-size:42px;
+
+line-height:80px;
+
 }
 
 
-/* WORD STYLE */
+.syllable{
 
-.word{
-font-size:36px;
-margin-right:14px;
-transition:.35s ease;
-display:inline-block;
+padding:4px 6px;
+
+transition:.3s ease;
+
 }
 
 
-/* HIGHLIGHT ACTIVE WORD */
+.guru{
+
+color:#b8860b;
+
+}
+
+
+.laghu{
+
+color:#444;
+
+}
+
 
 .highlight{
-color:#d4af37;
+
 text-shadow:
-0px 0px 12px rgba(212,175,55,0.9),
-0px 0px 25px rgba(212,175,55,0.4);
-transform:scale(1.2);
+
+0px 0px 12px gold,
+
+0px 0px 25px orange;
+
+transform:scale(1.25);
+
 }
 
 
-/* AUDIO PLAYER */
-
 audio{
+
 margin-top:40px;
+
 }
 
 </style>
@@ -104,7 +109,7 @@ margin-top:40px;
 
 <div class="container">
 
-<h2>Live Chant Visualization</h2>
+<h2>Guru–Laghu Chant Visualization</h2>
 
 
 {% if meter %}
@@ -121,22 +126,18 @@ Detected Meter: <b>{{ meter }}</b>
 {% endif %}
 
 
-<!-- VERSE DISPLAY -->
-
 <div id="chant-container">
 
-{% for word in verse.split() %}
-<span class="word">{{ word }}</span>
+{% for char in verse %}
+<span class="syllable">{{ char }}</span>
 {% endfor %}
 
 </div>
 
 
-<!-- AUDIO PLAYER -->
-
 {% if audio %}
 <audio id="chant-audio" controls autoplay>
-<source src="{{ url_for('static', filename=audio) }}" type="audio/mpeg">
+<source src="{{ url_for('static', filename=audio) }}">
 </audio>
 {% endif %}
 
@@ -147,39 +148,27 @@ Detected Meter: <b>{{ meter }}</b>
 <script>
 
 const audio = document.getElementById("chant-audio");
-const words = document.querySelectorAll(".word");
+
+const syllables = document.querySelectorAll(".syllable");
+
 
 if(audio){
 
-audio.addEventListener("loadedmetadata", ()=>{
+audio.addEventListener("timeupdate", ()=>{
 
-const totalDuration = audio.duration * 1000;
-const timePerWord = totalDuration / words.length;
+const progress = audio.currentTime / audio.duration;
 
-words.forEach(word=>{
-word.classList.remove("highlight");
-});
+const index = Math.floor(progress * syllables.length);
 
-words.forEach((word,index)=>{
+syllables.forEach((s,i)=>{
 
-setTimeout(()=>{
-
-word.classList.add("highlight");
-
-if(index>0){
-words[index-1].classList.remove("highlight");
+if(i===index){
+s.classList.add("highlight");
+}
+else{
+s.classList.remove("highlight");
 }
 
-}, timePerWord * index);
-
-});
-
-});
-
-audio.addEventListener("ended", ()=>{
-
-words.forEach(word=>{
-word.classList.remove("highlight");
 });
 
 });
