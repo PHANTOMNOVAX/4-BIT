@@ -4,9 +4,6 @@ import uuid
 import re
 
 
-AUDIO_FOLDER = "static/audio"
-
-
 def preprocess_text(text):
 
     text = text.replace("॥", ". ")
@@ -23,11 +20,13 @@ def generate_audio(text, meter=""):
 
     filename = f"chant_{uuid.uuid4().hex}.mp3"
 
-    filepath = os.path.join(AUDIO_FOLDER, filename)
+    audio_folder = "static/audio"
 
-    os.makedirs(AUDIO_FOLDER, exist_ok=True)
+    os.makedirs(audio_folder, exist_ok=True)
 
-    tts = gTTS(text=cleaned, lang="hi", slow=False)
+    filepath = os.path.join(audio_folder, filename)
+
+    tts = gTTS(text=cleaned, lang="hi")
 
     tts.save(filepath)
 
