@@ -18,15 +18,21 @@ def detect_meter(text):
 
         counts.append(len(syllables))
 
-    if all(7 <= c <= 9 for c in counts):
+    # TRUE ANUSHTUBH CHECK
+
+    if len(counts) == 4 and all(7 <= c <= 9 for c in counts):
 
         return f"Anushtubh Meter (pattern: {counts})"
 
-    elif all(10 <= c <= 12 for c in counts):
+    # TRISHTUBH CHECK
+
+    elif len(counts) >= 2 and all(10 <= c <= 11 for c in counts):
 
         return f"Trishtubh Meter (pattern: {counts})"
 
-    elif all(12 <= c <= 14 for c in counts):
+    # JAGATI CHECK
+
+    elif len(counts) >= 2 and all(12 <= c <= 14 for c in counts):
 
         return f"Jagati Meter (pattern: {counts})"
 
